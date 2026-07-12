@@ -1,0 +1,506 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Banco de questoes interativo para a prova de mandarim HSK2 (licoes 1-8): vocabulario, gramatica, julgar, reordenar e associacao, com variacoes de cada questao.">
+<title>Banco de Questoes HSK2 - Licoes 1-8</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#128221;</text></svg>">
+<style>
+:root{
+  --bg:#f7f8f6; --surface:#ffffff; --ink:#22252a; --ink-soft:#5a5f66;
+  --line:#e3e4df; --accent:#b43a30; --accent-soft:#f6e9e7;
+  --jade:#2e7d6b; --jade-soft:#e6f1ee; --gold:#8a6d2f; --chip:#efeeea; --hz:#9a9ea4;
+}
+@media (prefers-color-scheme: dark){
+  :root{ --bg:#17191d; --surface:#1f2228; --ink:#e8e6e1; --ink-soft:#a4a8ad; --line:#33373d;
+    --accent:#e07a6d; --accent-soft:#3a2724; --jade:#5cb59e; --jade-soft:#1f342e; --gold:#c9a85c; --chip:#2a2d33; --hz:#6f747b; }
+}
+:root[data-theme="dark"]{ --bg:#17191d; --surface:#1f2228; --ink:#e8e6e1; --ink-soft:#a4a8ad; --line:#33373d;
+  --accent:#e07a6d; --accent-soft:#3a2724; --jade:#5cb59e; --jade-soft:#1f342e; --gold:#c9a85c; --chip:#2a2d33; --hz:#6f747b; }
+:root[data-theme="light"]{ --bg:#f7f8f6; --surface:#ffffff; --ink:#22252a; --ink-soft:#5a5f66; --line:#e3e4df;
+  --accent:#b43a30; --accent-soft:#f6e9e7; --jade:#2e7d6b; --jade-soft:#e6f1ee; --gold:#8a6d2f; --chip:#efeeea; --hz:#9a9ea4; }
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font-family:"Segoe UI",system-ui,"Noto Sans SC","Microsoft YaHei",sans-serif; line-height:1.6; margin:0; font-size:16px}
+.wrap{max-width:800px; margin:0 auto; padding:0 20px 80px}
+.zh{font-family:"Microsoft YaHei","Noto Sans SC",sans-serif; color:var(--hz)}
+.py{color:var(--ink); font-weight:600}
+h1,h2{font-family:Georgia,"Noto Serif SC",serif; line-height:1.25; text-wrap:balance}
+h1{font-size:1.8rem; margin:.2em 0 .1em}
+h2{font-size:1.3rem; margin:0}
+header.hero{padding:36px 0 16px; border-bottom:3px double var(--accent)}
+.eyebrow{text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--accent); font-weight:600}
+.sub{color:var(--ink-soft); margin:.4em 0 0; max-width:62ch}
+a.backlink{display:inline-block; margin-bottom:6px; font-size:.85rem; color:var(--accent); text-decoration:none; border:1px solid var(--line); background:var(--chip); border-radius:999px; padding:4px 12px}
+a.backlink:hover{border-color:var(--accent)}
+.scorebar{position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--line); padding:10px 0; display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.scorebar .score{font-weight:700; font-variant-numeric:tabular-nums}
+.scorebar .score b{color:var(--jade)}
+.scorebar .pct{color:var(--ink-soft); font-weight:400; font-size:.9rem}
+button{font-family:inherit; cursor:pointer}
+.mini{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px; padding:5px 14px; font-size:.8rem}
+.mini:hover{border-color:var(--accent)}
+nav.toc{display:flex; gap:8px; flex-wrap:wrap; margin:16px 0 4px}
+nav.toc a{font-size:.82rem; text-decoration:none; color:var(--ink); background:var(--chip); border:1px solid var(--line); padding:4px 12px; border-radius:999px}
+nav.toc a:hover{border-color:var(--accent); color:var(--accent)}
+section{margin-top:34px}
+.sec-head{display:flex; align-items:baseline; gap:12px; border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:8px}
+.sec-head .zh-label{color:var(--accent); font-size:.95rem; font-style:italic; font-family:Georgia,serif}
+.sec-note{color:var(--ink-soft); font-size:.9rem; margin:0 0 6px}
+.q{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:14px 0}
+.q .qtop{display:flex; align-items:center; gap:10px; margin-bottom:8px; flex-wrap:wrap}
+.qnum{background:var(--accent); color:#fff; font-family:Georgia,serif; font-weight:700; min-width:30px; height:30px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-size:.9rem; padding:0 7px}
+.vary{margin-left:auto; border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px; padding:4px 12px; font-size:.78rem}
+.vary:hover{border-color:var(--accent); color:var(--accent)}
+.stem .py{font-size:1.08rem; display:block; font-weight:600}
+.stem .zh{font-size:.85rem; display:block}
+.stem .lab{font-size:.8rem; color:var(--ink-soft); font-weight:400; text-transform:uppercase; letter-spacing:.06em}
+.opts{display:flex; flex-direction:column; gap:8px; margin-top:10px}
+.opts button, .jbtns button{text-align:left; border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:8px; padding:9px 14px; font-size:1rem}
+.opts button:hover{border-color:var(--accent)}
+.opts button.correct, .jbtns button.correct{border-color:var(--jade); background:var(--jade-soft); font-weight:700}
+.opts button.wrong, .jbtns button.wrong{border-color:#d9534f; background:rgba(217,83,79,.16)}
+.opts button:disabled, .jbtns button:disabled{cursor:default}
+.jbtns{display:flex; gap:8px; margin-top:10px}
+.jbtns button{flex:0 0 auto; font-size:1.15rem; font-weight:700; padding:6px 24px; text-align:center}
+.fb{display:none; margin-top:10px; padding:9px 12px; border-radius:0 8px 8px 0; font-size:.92rem; border-left:4px solid var(--jade); background:var(--jade-soft)}
+.fb.show{display:block}
+.fb.bad{border-left-color:#d9534f; background:rgba(217,83,79,.12)}
+.fb .py{font-weight:600}
+.fb .zh{font-size:.85rem}
+.ochips{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0}
+.ochip{border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:8px; padding:8px 12px; cursor:pointer; font-size:.95rem; display:inline-flex; gap:7px; align-items:center}
+.ochip .num{font-weight:700; color:var(--accent)}
+.ochip:hover{border-color:var(--accent)}
+.ochip.used{opacity:.3; cursor:default}
+.oans{min-height:22px; font-weight:700; letter-spacing:.12em; color:var(--accent); font-size:1.2rem; margin:4px 0}
+.oans .ph{color:var(--ink-soft); font-weight:400; letter-spacing:0; font-size:.85rem}
+.oclear{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px; padding:5px 14px; font-size:.8rem}
+.oclear:hover{border-color:var(--accent)}
+.match{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 16px; margin:14px 0}
+.match .qtop{display:flex; align-items:center; gap:10px; margin-bottom:8px; flex-wrap:wrap}
+.match h4{margin:0; font-family:Georgia,serif; font-size:1.02rem}
+.match-cols{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.mcol{display:flex; flex-direction:column; gap:8px}
+.mitem{text-align:left; border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:8px; padding:9px 12px; font-size:.95rem; cursor:pointer; line-height:1.35}
+.mitem .py{color:var(--accent); font-weight:600}
+.mitem .zh{font-size:.82rem}
+.mitem:hover{border-color:var(--accent)}
+.mitem.active{border-color:var(--accent); background:var(--accent-soft)}
+.mitem.done{border-color:var(--jade); background:var(--jade-soft); cursor:default; opacity:.9}
+.mitem.wrong{border-color:#d9534f; background:rgba(217,83,79,.16)}
+.mitem:disabled{cursor:default}
+.match .status{margin-top:10px; font-size:.86rem; font-weight:600; color:var(--jade)}
+footer{margin-top:56px; padding-top:16px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:.82rem}
+img{max-width:100%}
+@media (max-width:640px){
+  body{font-size:15px}
+  .wrap{padding:0 14px 60px}
+  header.hero{padding:22px 0 12px}
+  h1{font-size:1.4rem}
+  .q{padding:12px 12px}
+  .opts button{padding:9px 12px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+<header class="hero">
+  <a class="backlink" href="index.html">← Voltar ao guia de estudos</a>
+  <div class="eyebrow">Chino Mandarim Básico 2 · Banco de questões</div>
+  <h1>📝 Banco de Questões HSK2 — Lições 1 a 8</h1>
+  <p class="sub">Cada questão tem um botão <strong>🔄 Variação</strong>: clique para gerar outra versão do mesmo ponto, com palavras diferentes. Assim você aprende o padrão em vez de decorar a resposta. Tudo em pinyin; os caracteres aparecem pequenos, só de referência.</p>
+</header>
+
+<div class="scorebar">
+  <span class="score">Acertos: <b id="hits">0</b> / <span id="total">0</span> <span class="pct" id="pct"></span></span>
+  <button class="mini" id="resetBtn">↺ Zerar placar e sortear tudo de novo</button>
+</div>
+
+<nav class="toc">
+  <a href="#vocab">Vocabulário</a>
+  <a href="#gram">Gramática</a>
+  <a href="#judge">Julgar √/×</a>
+  <a href="#order">Reordenar</a>
+  <a href="#match">Associação</a>
+</nav>
+
+<section id="vocab">
+  <div class="sec-head"><h2>Vocabulário</h2><span class="zh-label">shēngcí</span></div>
+  <p class="sec-note">Leia a palavra em pinyin e escolha o significado. Use 🔄 para cair outra palavra do mesmo tema.</p>
+  <div id="vocabWrap"></div>
+</section>
+
+<section id="gram">
+  <div class="sec-head"><h2>Gramática — complete a frase</h2><span class="zh-label">yǔfǎ</span></div>
+  <p class="sec-note">Escolha a palavra que completa a lacuna （ ）. As variações trocam a frase, mas testam a mesma regra.</p>
+  <div id="gramWrap"></div>
+</section>
+
+<section id="judge">
+  <div class="sec-head"><h2>Julgue: √ ou ×</h2><span class="zh-label">pànduàn</span></div>
+  <p class="sec-note">Leia a frase e decida se a afirmação abaixo (●) está certa (√) ou errada (×).</p>
+  <div id="judgeWrap"></div>
+</section>
+
+<section id="order">
+  <div class="sec-head"><h2>Reordenar as palavras</h2><span class="zh-label">liáncí chéngjù</span></div>
+  <p class="sec-note">Clique nos números na ordem certa para montar a frase. Botão ↺ Limpar para refazer.</p>
+  <div id="orderWrap"></div>
+</section>
+
+<section id="match">
+  <div class="sec-head"><h2>Associação</h2><span class="zh-label">pèiduì</span></div>
+  <p class="sec-note">Clique numa palavra e depois no significado. Par certo trava em verde. 🔄 embaralha de novo.</p>
+  <div id="matchWrap"></div>
+</section>
+
+<footer>Banco de questões com variações · vocabulário e gramática das lições 1–8 (HSK Standard Course 2) · <strong>Jiāyóu!</strong></footer>
+</div>
+
+<script>
+/* ================= util + placar ================= */
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t;} return a; }
+var CIRCLED='①②③④⑤⑥⑦⑧⑨';
+var hits=0, total=0;
+function score(ok){ total++; if(ok) hits++; document.getElementById('hits').textContent=hits; document.getElementById('total').textContent=total; document.getElementById('pct').textContent=total?('('+Math.round(hits/total*100)+'%)'):''; }
+
+/* ================= dados ================= */
+var VOCAB=[
+ [ {w:"lǚyóu",zh:"旅游",opts:["viajar","nadar","correr"],c:0},
+   {w:"yóuyǒng",zh:"游泳",opts:["nadar","viajar","dormir"],c:0} ],
+ [ {w:"shǒubiǎo",zh:"手表",opts:["relógio de pulso","jornal","copo"],c:0},
+   {w:"yǎnjing",zh:"眼睛",opts:["olho","mão","cabeça"],c:0} ],
+ [ {w:"yánsè",zh:"颜色",opts:["cor","tamanho","preço"],c:0},
+   {w:"fángjiān",zh:"房间",opts:["quarto","cozinha","loja"],c:0} ],
+ [ {w:"qǐchuáng",zh:"起床",opts:["levantar-se","dormir","descansar"],c:0},
+   {w:"pǎobù",zh:"跑步",opts:["correr","nadar","andar de bicicleta"],c:0} ],
+ [ {w:"shēngbìng",zh:"生病",opts:["ficar doente","descansar","melhorar"],c:0},
+   {w:"shēntǐ",zh:"身体",opts:["corpo; saúde","remédio","hospital"],c:0} ],
+ [ {w:"piányi",zh:"便宜",opts:["barato","caro","bonito"],c:0},
+   {w:"guì",zh:"贵",opts:["caro","barato","novo"],c:0} ],
+ [ {w:"jīchǎng",zh:"机场",opts:["aeroporto","estação de trem","empresa"],c:0},
+   {w:"gōngsī",zh:"公司",opts:["empresa","escola","hospital"],c:0} ],
+ [ {w:"fúwùyuán",zh:"服务员",opts:["atendente, garçom","professor","médico"],c:0},
+   {w:"shìqing",zh:"事情",opts:["assunto, coisa","tempo","lugar"],c:0} ],
+ [ {w:"miàntiáo",zh:"面条",opts:["macarrão","carne de carneiro","leite"],c:0},
+   {w:"yángròu",zh:"羊肉",opts:["carne de carneiro","peixe","macarrão"],c:0} ],
+ [ {w:"yǐhòu",zh:"以后",opts:["depois","antes","agora"],c:0},
+   {w:"yǐjīng",zh:"已经",opts:["já","ainda","sempre"],c:0} ],
+ [ {w:"kuài",zh:"快",opts:["rápido","lento","longe"],c:0},
+   {w:"màn",zh:"慢",opts:["lento","rápido","perto"],c:0} ],
+ [ {w:"jièshào",zh:"介绍",opts:["apresentar, indicar","ajudar","perguntar"],c:0},
+   {w:"bāng",zh:"帮",opts:["ajudar","esperar","procurar"],c:0} ]
+];
+
+var GRAM=[
+ [ {s:"Tā bú shì lǎoshī, wǒ （ ） bú shì lǎoshī.", zh:"他不是老师，我（ ）不是老师。", opts:["yě","dōu","hái"], c:0, why:"yě vem antes de bù: 'também não'."},
+   {s:"Wǒ bù xǐhuan hē kāfēi, tā （ ） bù xǐhuan.", zh:"我不喜欢喝咖啡，他（ ）不喜欢。", opts:["yě","zuì","jiù"], c:0, why:"yě + bù = 'também não'."} ],
+ [ {s:"Wǒ （ ） tiān dōu liù diǎn qǐchuáng.", zh:"我（ ）天都六点起床。", opts:["měi","zuì","hái"], c:0, why:"měi tiān dōu = todos os dias."},
+   {s:"Tā měi ge xīngqī （ ） qù yóuyǒng.", zh:"他每个星期（ ）去游泳。", opts:["dōu","yě","le"], c:0, why:"měi … dōu andam juntos."} ],
+ [ {s:"Zhè jiàn yīfu （ ） dà, yǒu méiyǒu xiǎo de?", zh:"这件衣服（ ）大，有没有小的？", opts:["yǒudiǎnr","yìdiǎnr","hěn"], c:0, why:"yǒudiǎnr (reclamação) vem ANTES do adjetivo."},
+   {s:"Zhège tài guì le, piányi （ ） ba.", zh:"这个太贵了，便宜（ ）吧。", opts:["yìdiǎnr","yǒudiǎnr","fēicháng"], c:0, why:"adj + yìdiǎnr (desejo) vem DEPOIS do adjetivo."} ],
+ [ {s:"Wǒ jiā （ ） gōngsī hěn yuǎn.", zh:"我家（ ）公司很远。", opts:["lí","cóng","dào"], c:0, why:"lí marca a distância entre dois lugares."},
+   {s:"Xuéxiào （ ） wǒ jiā bù yuǎn.", zh:"学校（ ）我家不远。", opts:["lí","gěi","duì"], c:0, why:"A lí B + adjetivo de distância."} ],
+ [ {s:"Zhège gōngzuò shì tā bāng wǒ （ ） de.", zh:"这个工作是他帮我（ ）的。", opts:["jièshào","jièshào le","huì jièshào"], c:0, why:"Em shì…de o verbo fica na forma simples."},
+   {s:"— Diànhuà shì shéi dǎ （ ）? — Érzi dǎ de.", zh:"——电话是谁打（ ）？——儿子打的。", opts:["de","le","ma"], c:0, why:"shì … de enfatiza quem fez a ação."} ],
+ [ {s:"（ ） zuótiān xiàyǔ, suǒyǐ wǒmen méi qù.", zh:"（ ）昨天下雨，所以我们没去。", opts:["Yīnwèi","Suǒyǐ","Yǐhòu"], c:0, why:"yīnwèi (porque) … suǒyǐ (então)."},
+   {s:"Tā shēngbìng le, （ ） méi lái shàngkè.", zh:"他生病了，（ ）没来上课。", opts:["suǒyǐ","yīnwèi","hái"], c:0, why:"suǒyǐ introduz a consequência."} ],
+ [ {s:"— Nǐ yào qù ma? — Bù, wǒ （ ） qù.", zh:"——你要去吗？——不，我（ ）去。", opts:["bù xiǎng","bù yào","méi"], c:0, why:"A negação de yào (querer) é bù xiǎng."},
+   {s:"Tā jīntiān （ ） zuò chūzūchē qù jīchǎng.", zh:"他今天（ ）坐出租车去机场。", opts:["yào","hěn","dōu"], c:0, why:"yào + verbo = plano/intenção ('vai')."} ],
+ [ {s:"Zhè jiàn búcuò, （ ） mǎi zhè jiàn ba.", zh:"这件不错，（ ）买这件吧。", opts:["jiù","hái","zuì"], c:0, why:"jiù = decisão ('então compro esta')."},
+   {s:"Zuò fēijī liǎng ge xiǎoshí （ ） dào le.", zh:"坐飞机两个小时（ ）到了。", opts:["jiù","cái","hái"], c:0, why:"jiù enfatiza que chegou rápido."} ],
+ [ {s:"Ràng wǒ xiǎngxiang （ ） gàosu nǐ.", zh:"让我想想（ ）告诉你。", opts:["zài","jiù","yě"], c:0, why:"V1 + zài + V2 = 'depois de… então…'."},
+   {s:"Zhège píngguǒ hěn hǎochī, wǒ xiǎng （ ） chī yí ge.", zh:"这个苹果很好吃，我想（ ）吃一个。", opts:["zài","dōu","le"], c:0, why:"zài + V + número = repetir a ação (comer mais um)."} ],
+ [ {s:"Wáng lǎoshī （ ） wǒ gàosu nǐ yí jiàn shìqing.", zh:"王老师（ ）我告诉你一件事情。", opts:["ràng","gěi","duì"], c:0, why:"ràng B fazer = frase pivô (pediu que eu…)."},
+   {s:"Māma （ ） wǒ měi tiān gěi tā dǎ diànhuà.", zh:"妈妈（ ）我每天给她打电话。", opts:["ràng","hái","jiù"], c:0, why:"ràng = deixar/fazer com que."} ]
+];
+
+var JUDGE=[
+ [ {s:"Wǒ měi tiān liù diǎn qǐchuáng, qǐchuáng yǐhòu qù pǎobù.", zh:"我每天六点起床，起床以后去跑步。", claim:"Tā zǎoshang pǎobù.", claimZh:"他早上跑步。", ans:true, why:"Levanta cedo e corre depois; corre de manhã."},
+   {s:"Wǒ měi tiān qī diǎn qǐchuáng, ránhòu chī zǎofàn, bù pǎobù.", zh:"我每天七点起床，然后吃早饭，不跑步。", claim:"Tā zǎoshang pǎobù.", claimZh:"他早上跑步。", ans:false, why:"Ele diz que NÃO corre (bù pǎobù)."} ],
+ [ {s:"Zhè jiàn hóngsè de yǒudiǎnr guì, wǒ mǎi nà jiàn báisè de.", zh:"这件红色的有点儿贵，我买那件白色的。", claim:"Tā mǎi le báisè de.", claimZh:"他买了白色的。", ans:true, why:"A vermelha era cara; ele levou a branca."},
+   {s:"Liǎng jiàn dōu yǒudiǎnr guì, ràng wǒ zài xiǎngxiang.", zh:"两件都有点儿贵，让我再想想。", claim:"Tā mǎi le yí jiàn.", claimZh:"他买了一件。", ans:false, why:"Ele ainda vai pensar; não comprou nada."} ],
+ [ {s:"Wǒ jiā lí xuéxiào hěn jìn, zǒu lù wǔ fēnzhōng jiù dào.", zh:"我家离学校很近，走路五分钟就到。", claim:"Tā jiā lí xuéxiào yuǎn.", claimZh:"他家离学校远。", ans:false, why:"O texto diz hěn jìn (perto), não longe."},
+   {s:"Wǒ jiā lí gōngsī hěn yuǎn, zuò dìtiě yào yí ge xiǎoshí.", zh:"我家离公司很远，坐地铁要一个小时。", claim:"Cóng jiā dào gōngsī yào hěn cháng shíjiān.", claimZh:"从家到公司要很长时间。", ans:true, why:"Uma hora de metrô = bastante tempo."} ],
+ [ {s:"Yīnwèi xiàyǔ, suǒyǐ wǒmen méi qù dǎ lánqiú.", zh:"因为下雨，所以我们没去打篮球。", claim:"Jīntiān tiānqì hěn hǎo.", claimZh:"今天天气很好。", ans:false, why:"Choveu (xiàyǔ), então não jogaram."},
+   {s:"Jīntiān tiānqì hěn hǎo, wǒmen qù gōngyuán pǎobù.", zh:"今天天气很好，我们去公园跑步。", claim:"Jīntiān méi xiàyǔ.", claimZh:"今天没下雨。", ans:true, why:"O tempo está bom, foram correr — não choveu."} ],
+ [ {s:"Wáng lǎoshī ràng wǒ gàosu nǐ, míngtiān bù shàngkè.", zh:"王老师让我告诉你，明天不上课。", claim:"Míngtiān yǒu kè.", claimZh:"明天有课。", ans:false, why:"O recado é que amanhã NÃO tem aula."},
+   {s:"Lǎoshī shuō míngtiān de kǎoshì bā diǎn kāishǐ.", zh:"老师说明天的考试八点开始。", claim:"Kǎoshì zǎoshang kāishǐ.", claimZh:"考试早上开始。", ans:true, why:"8h da manhã = de manhã."} ],
+ [ {s:"Wǒ shēngbìng le, chī yào yǐhòu xiànzài hǎo duō le.", zh:"我生病了，吃药以后现在好多了。", claim:"Tā xiànzài hǎo yìdiǎnr le.", claimZh:"他现在好一点儿了。", ans:true, why:"hǎo duō le = está bem melhor."},
+   {s:"Yīshēng shuō wǒ xià ge xīngqī néng chūyuàn.", zh:"医生说我下个星期能出院。", claim:"Tā xiànzài yǐjīng chūyuàn le.", claimZh:"他现在已经出院了。", ans:false, why:"A alta é só na semana que vem, ainda não saiu."} ],
+ [ {s:"Wǒ gōngzuò hěn máng, méiyǒu shíjiān xiūxi.", zh:"我工作很忙，没有时间休息。", claim:"Tā hěn máng.", claimZh:"他很忙。", ans:true, why:"Ele mesmo diz hěn máng (muito ocupado)."},
+   {s:"Zhè jǐ tiān wǒ bù tài máng, měi tiān dōu xiūxi.", zh:"这几天我不太忙，每天都休息。", claim:"Tā zhè jǐ tiān hěn máng.", claimZh:"他这几天很忙。", ans:false, why:"Ele diz bù tài máng (não muito ocupado)."} ],
+ [ {s:"Zuò gōnggòng qìchē tài màn le, wǒ zuò chūzūchē qù.", zh:"坐公共汽车太慢了，我坐出租车去。", claim:"Tā zuò chūzūchē.", claimZh:"他坐出租车。", ans:true, why:"O ônibus é lento; ele vai de táxi."},
+   {s:"Kāichē yě bù kuài, lù shàng chē tài duō le.", zh:"开车也不快，路上车太多了。", claim:"Kāichē hěn kuài.", claimZh:"开车很快。", ans:false, why:"Diz kāichē yě bù kuài (dirigir também não é rápido)."} ]
+];
+
+var ORDER=[
+ [ {parts:["jiǔyuè","qù Běijīng lǚyóu","zuì hǎo"], correct:[0,1,2], full:"Jiǔyuè qù Běijīng lǚyóu zuì hǎo.", tr:"Setembro é a melhor época para visitar Pequim."},
+   {parts:["zuì hǎo","shí yuè","qù Běijīng"], correct:[1,2,0], full:"Shí yuè qù Běijīng zuì hǎo.", tr:"Outubro é a melhor época para ir a Pequim."} ],
+ [ {parts:["wǒ","dōu","měi tiān","qī diǎn qǐchuáng"], correct:[0,2,1,3], full:"Wǒ měi tiān dōu qī diǎn qǐchuáng.", tr:"Eu levanto às sete todos os dias. (měi + dōu)"},
+   {parts:["měi ge xīngqī","tā","dōu","qù yóuyǒng"], correct:[1,0,2,3], full:"Tā měi ge xīngqī dōu qù yóuyǒng.", tr:"Ele vai nadar toda semana."} ],
+ [ {parts:["shì","zhè jiàn yīfu","wǒ mǎi","de"], correct:[1,0,2,3], full:"Zhè jiàn yīfu shì wǒ mǎi de.", tr:"Esta roupa fui eu que comprei. (shì…de)"},
+   {parts:["shì","zhège gōngzuò","tā bāng wǒ jièshào","de"], correct:[1,0,2,3], full:"Zhège gōngzuò shì tā bāng wǒ jièshào de.", tr:"Foi ele que me indicou este trabalho."} ],
+ [ {parts:["yǐjīng","wǒ de shēntǐ","le","hǎo"], correct:[1,0,3,2], full:"Wǒ de shēntǐ yǐjīng hǎo le.", tr:"Eu já estou recuperado. (yǐjīng…le)"},
+   {parts:["yǐjīng","tāmen","le","chīfàn"], correct:[1,0,3,2], full:"Tāmen yǐjīng chīfàn le.", tr:"Eles já comeram."} ],
+ [ {parts:["yǒudiǎnr","zhè jiàn yīfu","dà"], correct:[1,0,2], full:"Zhè jiàn yīfu yǒudiǎnr dà.", tr:"Esta roupa está um pouco grande. (yǒudiǎnr + adj)"},
+   {parts:["yǒudiǎnr","jīntiān","lěng"], correct:[1,0,2], full:"Jīntiān yǒudiǎnr lěng.", tr:"Hoje está um pouco frio."} ],
+ [ {parts:["hěn yuǎn","lí","wǒ jiā","gōngsī"], correct:[2,1,3,0], full:"Wǒ jiā lí gōngsī hěn yuǎn.", tr:"Minha casa fica longe da empresa. (A lí B + adj)"},
+   {parts:["hěn jìn","lí","xuéxiào","wǒ jiā"], correct:[3,1,2,0], full:"Wǒ jiā lí xuéxiào hěn jìn.", tr:"Minha casa fica perto da escola."} ],
+ [ {parts:["gàosu nǐ","Wáng lǎoshī","yí jiàn shìqing","ràng wǒ"], correct:[1,3,0,2], full:"Wáng lǎoshī ràng wǒ gàosu nǐ yí jiàn shìqing.", tr:"O professor Wang me pediu para te contar uma coisa. (pivô com ràng)"},
+   {parts:["ràng wǒ","māma","dǎ diànhuà","gěi tā"], correct:[1,0,3,2], full:"Māma ràng wǒ gěi tā dǎ diànhuà.", tr:"A mãe me pediu para ligar para ela."} ],
+ [ {parts:["zài","wǒmen","xiàkè le","qù kàn diànyǐng"], correct:[1,2,0,3], full:"Wǒmen xiàkè le zài qù kàn diànyǐng.", tr:"Vamos ao cinema depois da aula. (V1 le … zài V2)"},
+   {parts:["zài","bàba huí jiā le","wǒmen","chīfàn"], correct:[1,2,0,3], full:"Bàba huí jiā le wǒmen zài chīfàn.", tr:"Quando o pai voltar, aí a gente come."} ],
+ [ {parts:["duì","kāfēi hē duō le","bù hǎo","shēntǐ"], correct:[1,0,3,2], full:"Kāfēi hē duō le duì shēntǐ bù hǎo.", tr:"Café demais faz mal à saúde. (duì … bù hǎo)"},
+   {parts:["duì","shēntǐ","duō yùndòng","hǎo"], correct:[2,0,1,3], full:"Duō yùndòng duì shēntǐ hǎo.", tr:"Fazer bastante exercício faz bem à saúde."} ],
+ [ {parts:["wǒmen","yùndong yùndong ba","wàimiàn tiānqì hěn hǎo","chūqù"], correct:[2,0,3,1], full:"Wàimiàn tiānqì hěn hǎo, wǒmen chūqù yùndong yùndong ba.", tr:"O tempo lá fora está ótimo, vamos nos exercitar! (verbo reduplicado)"},
+   {parts:["hǎo ma","wǒmen","qù kàn diànyǐng","xiàwǔ"], correct:[1,3,2,0], full:"Wǒmen xiàwǔ qù kàn diànyǐng, hǎo ma?", tr:"Vamos ao cinema à tarde, pode ser? (…hǎo ma?)"} ]
+];
+
+var MATCH=[
+ {title:"Rotina e corpo", pairs:[
+   {py:"qǐchuáng",zh:"起床",m:"levantar-se"},{py:"shuìjiào",zh:"睡觉",m:"dormir"},
+   {py:"xiūxi",zh:"休息",m:"descansar"},{py:"pǎobù",zh:"跑步",m:"correr"},
+   {py:"shēngbìng",zh:"生病",m:"ficar doente"},{py:"shēntǐ",zh:"身体",m:"corpo; saúde"} ]},
+ {title:"Transporte e lugares", pairs:[
+   {py:"fēijī",zh:"飞机",m:"avião"},{py:"huǒchē",zh:"火车",m:"trem"},
+   {py:"chūzūchē",zh:"出租车",m:"táxi"},{py:"jīchǎng",zh:"机场",m:"aeroporto"},
+   {py:"gōngsī",zh:"公司",m:"empresa"},{py:"jiàoshì",zh:"教室",m:"sala de aula"} ]},
+ {title:"Compras e opinião", pairs:[
+   {py:"piányi",zh:"便宜",m:"barato"},{py:"guì",zh:"贵",m:"caro"},
+   {py:"búcuò",zh:"不错",m:"bem bom"},{py:"yánsè",zh:"颜色",m:"cor"},
+   {py:"jiàn",zh:"件",m:"peça (roupa)"},{py:"zhǔnbèi",zh:"准备",m:"preparar"} ]},
+ {title:"Ações e recados", pairs:[
+   {py:"gàosu",zh:"告诉",m:"contar, dizer"},{py:"děng",zh:"等",m:"esperar"},
+   {py:"zhǎo",zh:"找",m:"procurar"},{py:"jièshào",zh:"介绍",m:"apresentar"},
+   {py:"bāng",zh:"帮",m:"ajudar"},{py:"ràng",zh:"让",m:"deixar; mandar"} ]}
+];
+
+/* ================= builders ================= */
+var LET=['A','B','C','D'];
+
+function buildChoice(data, containerId, kind){
+  var wrap=document.getElementById(containerId);
+  data.forEach(function(variants, qi){
+    var card=document.createElement('div'); card.className='q';
+    var vi=Math.floor(Math.random()*variants.length);
+    function render(){
+      card.innerHTML='';
+      var v=variants[vi];
+      var top=document.createElement('div'); top.className='qtop';
+      top.innerHTML='<span class="qnum">'+(qi+1)+'</span>';
+      if(variants.length>1){
+        var vb=document.createElement('button'); vb.className='vary'; vb.textContent='🔄 Variação';
+        vb.addEventListener('click', function(){ vi=(vi+1)%variants.length; render(); });
+        top.appendChild(vb);
+      }
+      card.appendChild(top);
+      var stem=document.createElement('div'); stem.className='stem';
+      if(kind==='vocab'){
+        stem.innerHTML='<span class="lab">Significado de:</span><span class="py">'+v.w+' <span class="zh">'+v.zh+'</span></span>';
+      } else {
+        stem.innerHTML='<span class="py">'+v.s+'</span><span class="zh">'+v.zh+'</span>';
+      }
+      card.appendChild(stem);
+      var opts=document.createElement('div'); opts.className='opts';
+      var order=shuffle(v.opts.map(function(_,i){return i;}));
+      var answered=false;
+      order.forEach(function(oi){
+        var b=document.createElement('button');
+        b.innerHTML='<b style="color:var(--accent);margin-right:8px">'+LET[opts.children.length]+'</b>'+v.opts[oi];
+        b.addEventListener('click', function(){
+          if(answered) return; answered=true;
+          var ok=(oi===v.c); score(ok);
+          Array.prototype.forEach.call(opts.children, function(btn){ btn.disabled=true; });
+          if(ok){ b.classList.add('correct'); }
+          else {
+            b.classList.add('wrong');
+            Array.prototype.forEach.call(opts.children, function(btn,k){ if(order[k]===v.c) btn.classList.add('correct'); });
+          }
+          var fb=document.createElement('div'); fb.className='fb show'+(ok?'':' bad');
+          fb.innerHTML=(ok?'<strong>✓ Certo!</strong> ':'<strong>✗ A certa é '+v.opts[v.c]+'.</strong> ')+(v.why||'');
+          card.appendChild(fb);
+        });
+        opts.appendChild(b);
+      });
+      card.appendChild(opts);
+    }
+    render();
+    wrap.appendChild(card);
+  });
+}
+
+function buildJudge(data, containerId){
+  var wrap=document.getElementById(containerId);
+  data.forEach(function(variants, qi){
+    var card=document.createElement('div'); card.className='q';
+    var vi=Math.floor(Math.random()*variants.length);
+    function render(){
+      card.innerHTML='';
+      var v=variants[vi];
+      var top=document.createElement('div'); top.className='qtop';
+      top.innerHTML='<span class="qnum">'+(qi+1)+'</span>';
+      if(variants.length>1){
+        var vb=document.createElement('button'); vb.className='vary'; vb.textContent='🔄 Variação';
+        vb.addEventListener('click', function(){ vi=(vi+1)%variants.length; render(); });
+        top.appendChild(vb);
+      }
+      card.appendChild(top);
+      var stem=document.createElement('div'); stem.className='stem';
+      stem.innerHTML='<span class="py">'+v.s+'</span><span class="zh">'+v.zh+'</span>'+
+        '<div style="margin-top:6px"><span class="py">● '+v.claim+'</span><span class="zh">'+v.claimZh+'</span></div>';
+      card.appendChild(stem);
+      var btns=document.createElement('div'); btns.className='jbtns';
+      var bT=document.createElement('button'); bT.textContent='√';
+      var bF=document.createElement('button'); bF.textContent='×';
+      var answered=false;
+      function ans(val, btn){
+        if(answered) return; answered=true;
+        bT.disabled=true; bF.disabled=true;
+        var ok=(val===v.ans); score(ok);
+        (v.ans?bT:bF).classList.add('correct');
+        if(!ok) btn.classList.add('wrong');
+        var fb=document.createElement('div'); fb.className='fb show'+(ok?'':' bad');
+        fb.innerHTML='<strong>'+(ok?'✓ Acertou!':'✗ A certa é '+(v.ans?'√':'×')+'.')+'</strong> '+v.why;
+        card.appendChild(fb);
+      }
+      bT.addEventListener('click', function(){ ans(true,bT); });
+      bF.addEventListener('click', function(){ ans(false,bF); });
+      btns.appendChild(bT); btns.appendChild(bF);
+      card.appendChild(btns);
+    }
+    render();
+    wrap.appendChild(card);
+  });
+}
+
+function buildOrder(data, containerId){
+  var wrap=document.getElementById(containerId);
+  data.forEach(function(variants, qi){
+    var card=document.createElement('div'); card.className='q';
+    var vi=Math.floor(Math.random()*variants.length);
+    function render(){
+      card.innerHTML='';
+      var v=variants[vi];
+      var top=document.createElement('div'); top.className='qtop';
+      top.innerHTML='<span class="qnum">'+(qi+1)+'</span><span style="font-size:.85rem;color:var(--ink-soft)">Monte a frase</span>';
+      if(variants.length>1){
+        var vb=document.createElement('button'); vb.className='vary'; vb.textContent='🔄 Variação';
+        vb.addEventListener('click', function(){ vi=(vi+1)%variants.length; render(); });
+        top.appendChild(vb);
+      }
+      card.appendChild(top);
+      var chips=document.createElement('div'); chips.className='ochips';
+      var ansRow=document.createElement('div'); ansRow.className='oans';
+      var fb=document.createElement('div'); fb.className='fb';
+      var picked=[]; var chipEls=[]; var scored=false;
+      v.parts.forEach(function(txt, idx){
+        var c=document.createElement('button'); c.className='ochip';
+        c.innerHTML='<span class="num">'+CIRCLED[idx]+'</span> '+txt;
+        c.addEventListener('click', function(){
+          if(scored || c.classList.contains('used')) return;
+          c.classList.add('used'); picked.push(idx); draw();
+          if(picked.length===v.parts.length) check();
+        });
+        chips.appendChild(c); chipEls.push(c);
+      });
+      function draw(){
+        if(!picked.length){ ansRow.innerHTML='<span class="ph">Sua resposta aparece aqui…</span>'; return; }
+        ansRow.textContent=picked.map(function(i){return CIRCLED[i];}).join(' ');
+      }
+      function check(){
+        scored=true;
+        var ok=picked.join(',')===v.correct.join(','); score(ok);
+        fb.className='fb show'+(ok?'':' bad');
+        var yours=picked.map(function(i){return CIRCLED[i];}).join('');
+        var right=v.correct.map(function(i){return CIRCLED[i];}).join('');
+        fb.innerHTML='<strong>'+(ok?'✓ Correto! ':'✗ Você montou '+yours+'. Ordem certa: '+right+'. ')+'</strong><span class="py">'+v.full+'</span><br>'+v.tr;
+      }
+      var clr=document.createElement('button'); clr.className='oclear'; clr.textContent='↺ Limpar';
+      clr.addEventListener('click', function(){
+        picked=[]; scored=false; chipEls.forEach(function(c){ c.classList.remove('used'); });
+        fb.className='fb'; draw();
+      });
+      draw();
+      card.appendChild(chips); card.appendChild(ansRow); card.appendChild(clr); card.appendChild(fb);
+    }
+    render();
+    wrap.appendChild(card);
+  });
+}
+
+function buildMatch(data, containerId){
+  var wrap=document.getElementById(containerId);
+  data.forEach(function(grp, gi){
+    var box=document.createElement('div'); box.className='match';
+    function render(){
+      box.innerHTML='';
+      var top=document.createElement('div'); top.className='qtop';
+      top.innerHTML='<h4>'+grp.title+'</h4>';
+      var vb=document.createElement('button'); vb.className='vary'; vb.textContent='🔄 Embaralhar';
+      vb.addEventListener('click', render);
+      top.appendChild(vb);
+      box.appendChild(top);
+      var cols=document.createElement('div'); cols.className='match-cols';
+      var left=document.createElement('div'); left.className='mcol';
+      var right=document.createElement('div'); right.className='mcol';
+      cols.appendChild(left); cols.appendChild(right); box.appendChild(cols);
+      var status=document.createElement('div'); status.className='status'; status.textContent='0 / '+grp.pairs.length+' pares';
+      box.appendChild(status);
+      var lo=shuffle(grp.pairs.map(function(_,i){return i;}));
+      var ro=shuffle(grp.pairs.map(function(_,i){return i;}));
+      var selL=null, selR=null, done=0, busy=false, counted=false;
+      lo.forEach(function(idx){
+        var b=document.createElement('button'); b.className='mitem'; b.dataset.idx=idx;
+        b.innerHTML='<span class="py">'+grp.pairs[idx].py+'</span> <span class="zh">'+grp.pairs[idx].zh+'</span>';
+        b.addEventListener('click', function(){ pick('L', b); });
+        left.appendChild(b);
+      });
+      ro.forEach(function(idx){
+        var b=document.createElement('button'); b.className='mitem'; b.dataset.idx=idx;
+        b.textContent=grp.pairs[idx].m;
+        b.addEventListener('click', function(){ pick('R', b); });
+        right.appendChild(b);
+      });
+      function pick(side, btn){
+        if(busy || btn.classList.contains('done')) return;
+        if(side==='L'){ if(selL) selL.classList.remove('active'); selL=btn; }
+        else { if(selR) selR.classList.remove('active'); selR=btn; }
+        btn.classList.add('active');
+        if(selL && selR){
+          busy=true;
+          if(selL.dataset.idx===selR.dataset.idx){
+            selL.classList.remove('active'); selR.classList.remove('active');
+            selL.classList.add('done'); selR.classList.add('done');
+            selL.disabled=true; selR.disabled=true;
+            done++; status.textContent=done+' / '+grp.pairs.length+' pares';
+            if(done===grp.pairs.length){ status.textContent='✓ Completo! '+done+' / '+grp.pairs.length; if(!counted){counted=true; score(true);} }
+            selL=null; selR=null; busy=false;
+          } else {
+            var a=selL, c=selR; a.classList.add('wrong'); c.classList.add('wrong');
+            setTimeout(function(){ a.classList.remove('wrong','active'); c.classList.remove('wrong','active'); selL=null; selR=null; busy=false; }, 650);
+          }
+        }
+      }
+    }
+    render();
+    wrap.appendChild(box);
+  });
+}
+
+/* ================= montar ================= */
+function buildAll(){
+  buildChoice(VOCAB, 'vocabWrap', 'vocab');
+  buildChoice(GRAM, 'gramWrap', 'gram');
+  buildJudge(JUDGE, 'judgeWrap');
+  buildOrder(ORDER, 'orderWrap');
+  buildMatch(MATCH, 'matchWrap');
+}
+buildAll();
+
+document.getElementById('resetBtn').addEventListener('click', function(){ location.reload(); });
+</script>
+</body>
+</html>

@@ -6,6 +6,8 @@ CONTEÚDO DA PASTA
   index.html            → Guia de estudos (gramática, vocabulário,
                           simulado interativo, redação, oral, dicas)
   treino-audicao.html   → Treino de audição (áudio em mandarim + questões)
+  banco-de-questoes.html→ Banco de questões com variações (vocabulário,
+                          gramática, julgar, reordenar, associação)
   README.txt            → este arquivo
 
 As duas páginas se conectam por links (o menu do guia tem "🎧 Treino de
