@@ -1,0 +1,860 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Guia de estudos em pinyin para a prova final de mandarim HSK2: gramática, vocabulário, simulado e redação (lições 1 a 8).">
+<title>Guia HSK2 — Prova Final (Lições 1–8)</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>🀄</text></svg>">
+<style>
+:root{
+  --bg:#f7f8f6; --surface:#ffffff; --ink:#22252a; --ink-soft:#5a5f66;
+  --line:#e3e4df; --accent:#b43a30; --accent-soft:#f6e9e7;
+  --jade:#2e7d6b; --jade-soft:#e6f1ee; --gold:#8a6d2f;
+  --chip:#efeeea; --hz:#9a9ea4;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#17191d; --surface:#1f2228; --ink:#e8e6e1; --ink-soft:#a4a8ad;
+    --line:#33373d; --accent:#e07a6d; --accent-soft:#3a2724;
+    --jade:#5cb59e; --jade-soft:#1f342e; --gold:#c9a85c;
+    --chip:#2a2d33; --hz:#6f747b;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17191d; --surface:#1f2228; --ink:#e8e6e1; --ink-soft:#a4a8ad;
+  --line:#33373d; --accent:#e07a6d; --accent-soft:#3a2724;
+  --jade:#5cb59e; --jade-soft:#1f342e; --gold:#c9a85c;
+  --chip:#2a2d33; --hz:#6f747b;
+}
+:root[data-theme="light"]{
+  --bg:#f7f8f6; --surface:#ffffff; --ink:#22252a; --ink-soft:#5a5f66;
+  --line:#e3e4df; --accent:#b43a30; --accent-soft:#f6e9e7;
+  --jade:#2e7d6b; --jade-soft:#e6f1ee; --gold:#8a6d2f;
+  --chip:#efeeea; --hz:#9a9ea4;
+}
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font-family:"Segoe UI",system-ui,"Noto Sans SC","Microsoft YaHei",sans-serif; line-height:1.6; margin:0; font-size:16px}
+.wrap{max-width:880px; margin:0 auto; padding:0 20px 80px}
+.zh{font-family:"Microsoft YaHei","Noto Sans SC","PingFang SC",sans-serif; color:var(--hz)}
+.py{color:var(--ink); font-weight:600}
+h1,h2,h3{font-family:Georgia,"Noto Serif SC","Songti SC",SimSun,serif; line-height:1.25; text-wrap:balance}
+h1{font-size:2rem; margin:.2em 0 .1em}
+h2{font-size:1.45rem; margin:0; color:var(--ink)}
+h3{font-size:1.1rem; margin:1.4em 0 .5em}
+header.hero{padding:48px 0 20px; border-bottom:3px double var(--accent)}
+.eyebrow{text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--accent); font-weight:600}
+.hero p.sub{color:var(--ink-soft); margin:.4em 0 0; max-width:60ch}
+.hero .hanzi-big{float:right; font-size:2.2rem; color:var(--accent); opacity:.9; line-height:1.2; margin-left:16px; font-family:Georgia,serif; font-style:italic}
+nav.toc{position:sticky; top:0; z-index:5; background:var(--bg); padding:10px 0; border-bottom:1px solid var(--line); display:flex; gap:8px; flex-wrap:wrap}
+nav.toc a{font-size:.82rem; text-decoration:none; color:var(--ink); background:var(--chip); border:1px solid var(--line); padding:4px 12px; border-radius:999px}
+nav.toc a:hover{border-color:var(--accent); color:var(--accent)}
+section{margin-top:44px}
+.sec-head{display:flex; align-items:baseline; gap:12px; border-bottom:1px solid var(--line); padding-bottom:8px; margin-bottom:18px}
+.sec-head .zh-label{color:var(--accent); font-size:.95rem; font-style:italic; font-family:Georgia,serif}
+.card{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:18px 20px; margin:14px 0}
+.callout{border-left:4px solid var(--accent); background:var(--accent-soft); border-radius:0 8px 8px 0; padding:12px 16px; margin:14px 0; font-size:.95rem}
+.callout.jade{border-left-color:var(--jade); background:var(--jade-soft)}
+table{border-collapse:collapse; width:100%; font-size:.95rem}
+.tablebox{overflow-x:auto}
+th{font-size:.72rem; text-transform:uppercase; letter-spacing:.1em; color:var(--ink-soft); text-align:left; padding:6px 10px; border-bottom:2px solid var(--line)}
+td{padding:7px 10px; border-bottom:1px solid var(--line); vertical-align:top}
+td.py{font-size:1.05rem; white-space:nowrap; color:var(--accent)}
+td.hz{color:var(--hz); white-space:nowrap; font-size:.95rem; font-weight:400}
+.hide-pt td.pt{color:transparent; text-shadow:0 0 10px color-mix(in srgb, var(--ink) 55%, transparent); cursor:pointer; user-select:none}
+.hide-pt td.pt.shown{color:var(--ink); text-shadow:none}
+details.lesson{background:var(--surface); border:1px solid var(--line); border-radius:10px; margin:12px 0; overflow:hidden}
+details.lesson>summary{cursor:pointer; padding:14px 18px; display:flex; align-items:center; gap:14px; list-style:none}
+details.lesson>summary::-webkit-details-marker{display:none}
+details.lesson[open]>summary{border-bottom:1px solid var(--line)}
+.lnum{background:var(--accent); color:#fff; font-family:Georgia,serif; font-weight:700; width:34px; height:34px; border-radius:6px; display:flex; align-items:center; justify-content:center; flex-shrink:0; font-size:1.05rem}
+summary .ttl{font-weight:600}
+summary .ttl .py-t{display:block; font-size:1.02rem; color:var(--accent)}
+summary .ttl .pt-t{display:block; font-size:.82rem; color:var(--ink-soft); font-weight:400}
+.lesson-body{padding:6px 18px 18px}
+.gram{border:1px solid var(--line); border-radius:8px; padding:12px 14px; margin:10px 0; background:var(--bg)}
+.gram .pattern{font-weight:700; font-size:1.02rem}
+.gram .pattern em{color:var(--accent); font-style:normal}
+.gram .use{font-size:.88rem; color:var(--ink-soft); margin:2px 0 6px}
+.gram .use em{color:var(--accent); font-style:normal; font-weight:600}
+.ex{margin:6px 0 0; padding-left:14px; border-left:3px solid var(--line); font-size:.95rem}
+.ex .py{font-size:1.05rem; display:block; color:var(--ink)}
+.ex .tr{color:var(--ink-soft); font-size:.9rem; display:block}
+.ex .zh{font-size:.9rem; display:block; color:var(--hz)}
+.qs{counter-reset:q}
+.q{margin:16px 0; padding:12px 14px; background:var(--surface); border:1px solid var(--line); border-radius:8px}
+.q .stem{margin-bottom:6px}
+.q .stem .py{font-size:1.05rem; display:block; font-weight:600}
+.q .stem .zh{font-size:.88rem; display:block}
+button.rev{background:var(--chip); color:var(--ink); border:1px solid var(--line); padding:5px 14px; border-radius:999px; font-size:.8rem; cursor:pointer; margin-top:8px; font-family:inherit}
+button.rev:hover{border-color:var(--jade); color:var(--jade)}
+button.rev:focus-visible{outline:2px solid var(--jade); outline-offset:2px}
+.ans{display:none; margin-top:10px; padding:10px 12px; border-left:4px solid var(--jade); background:var(--jade-soft); border-radius:0 6px 6px 0; font-size:.95rem}
+.ans.open{display:block}
+.ans .py{font-size:1.02rem}
+.ans .zh{font-size:.88rem}
+.bank{display:flex; flex-wrap:wrap; gap:8px; margin:10px 0 4px}
+.bank span{background:var(--chip); border:1px solid var(--line); border-radius:6px; padding:3px 10px; font-size:.95rem}
+.bank span b{color:var(--accent); font-weight:700; margin-right:4px}
+.bank span i{color:var(--hz); font-style:normal; font-size:.85rem; margin-left:4px}
+.pill{display:inline-block; background:var(--chip); border-radius:999px; padding:2px 10px; font-size:.75rem; color:var(--ink-soft); margin-right:6px; font-weight:400}
+.exam-grid{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:12px}
+.exam-grid .part{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px}
+.exam-grid .part .n{font-family:Georgia,serif; color:var(--accent); font-weight:700; font-size:.8rem; letter-spacing:.08em; text-transform:uppercase}
+.exam-grid .part .pts{float:right; color:var(--gold); font-size:.8rem; font-weight:600}
+.exam-grid .part p{margin:.35em 0 0; font-size:.88rem; color:var(--ink-soft)}
+.exam-grid .part .t{font-weight:600; margin-top:2px}
+ul.tight{margin:.4em 0; padding-left:1.2em}
+ul.tight li{margin:.35em 0}
+ul.tight em{color:var(--accent); font-style:normal; font-weight:600}
+ol.tight{margin:.4em 0; padding-left:1.4em}
+ol.tight li{margin:.5em 0}
+ol.tight .py{display:block}
+ol.tight .zh{display:block; font-size:.85rem}
+.tools{display:flex; gap:10px; align-items:center; flex-wrap:wrap; margin-bottom:10px}
+footer{margin-top:60px; padding-top:16px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:.82rem}
+@media (prefers-reduced-motion: no-preference){
+  details.lesson>summary{transition:background .15s}
+  details.lesson>summary:hover{background:var(--chip)}
+}
+img{max-width:100%}
+nav.toc a.ext{border-color:var(--accent); color:var(--accent); font-weight:600}
+/* ---- simulado interativo ---- */
+.exwrap{margin:8px 0 6px}
+.match{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:14px 16px; margin:14px 0}
+.match h4{margin:.1em 0 .7em; font-family:Georgia,serif; font-size:1.02rem}
+.match-cols{display:grid; grid-template-columns:1fr 1fr; gap:10px}
+.mcol{display:flex; flex-direction:column; gap:8px}
+.mitem{text-align:left; border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:8px; padding:9px 12px; font-size:.95rem; cursor:pointer; font-family:inherit; line-height:1.35}
+.mitem .py{color:var(--accent); font-weight:600}
+.mitem .zh{font-size:.82rem}
+.mitem:hover{border-color:var(--accent)}
+.mitem.active{border-color:var(--accent); background:var(--accent-soft)}
+.mitem.done{border-color:var(--jade); background:var(--jade-soft); cursor:default; opacity:.9}
+.mitem.wrong{border-color:#d9534f; background:rgba(217,83,79,.16)}
+.mitem:disabled{cursor:default}
+.match .status{margin-top:10px; font-size:.86rem; font-weight:600; color:var(--jade)}
+.match .note{margin-top:6px; font-size:.83rem; color:var(--ink-soft)}
+.jrow{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:12px 0}
+.jrow .st .py{font-weight:600; display:block}
+.jrow .st .zh{font-size:.85rem; display:block}
+.jrow .claim{margin-top:6px}
+.jbtns{display:flex; gap:8px; margin-top:8px}
+.jbtns button{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:8px; padding:6px 22px; font-size:1.15rem; cursor:pointer; font-weight:700; font-family:inherit}
+.jbtns button:hover{border-color:var(--accent)}
+.jbtns button.ok{border-color:var(--jade); background:var(--jade-soft)}
+.jbtns button.no{border-color:#d9534f; background:rgba(217,83,79,.16)}
+.jbtns button:disabled{cursor:default}
+.jfb{display:none; margin-top:8px; font-size:.9rem; padding:8px 12px; border-left:4px solid var(--jade); background:var(--jade-soft); border-radius:0 6px 6px 0}
+.jfb.show{display:block}
+.jfb.bad{border-left-color:#d9534f; background:rgba(217,83,79,.12)}
+.frow{margin:12px 0; padding:10px 12px; background:var(--surface); border:1px solid var(--line); border-radius:8px}
+.frow .fq .py{font-weight:600; display:block}
+.frow .fq .zh{font-size:.85rem; display:block}
+.frow select{margin-top:8px; font-family:inherit; font-size:.95rem; padding:7px 10px; border-radius:6px; border:1px solid var(--line); background:var(--bg); color:var(--ink); max-width:100%}
+.frow select.ok{border-color:var(--jade); background:var(--jade-soft)}
+.frow select.no{border-color:#d9534f; background:rgba(217,83,79,.16)}
+.frow .fb{display:none; margin-top:6px; font-size:.85rem; color:var(--jade); font-weight:600}
+.frow .fb.show{display:block}
+.frow .fb.bad{color:#c0392b}
+.orow{background:var(--surface); border:1px solid var(--line); border-radius:10px; padding:12px 14px; margin:12px 0}
+.ochips{display:flex; flex-wrap:wrap; gap:8px; margin:8px 0}
+.ochip{border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:8px; padding:8px 12px; cursor:pointer; font-size:.95rem; display:inline-flex; gap:7px; align-items:center; font-family:inherit}
+.ochip .num{font-weight:700; color:var(--accent)}
+.ochip:hover{border-color:var(--accent)}
+.ochip.used{opacity:.3; cursor:default}
+.oans{min-height:22px; font-weight:700; letter-spacing:.12em; color:var(--accent); font-size:1.2rem; margin:4px 0}
+.oans .ph{color:var(--ink-soft); font-weight:400; letter-spacing:0; font-size:.85rem}
+.octrls{display:flex; gap:8px; align-items:center; flex-wrap:wrap; margin-top:4px}
+.oclear{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px; padding:5px 14px; font-size:.8rem; cursor:pointer; font-family:inherit}
+.oclear:hover{border-color:var(--accent)}
+.ofb{display:none; margin-top:8px; font-size:.9rem; padding:8px 12px; border-left:4px solid var(--jade); background:var(--jade-soft); border-radius:0 6px 6px 0}
+.ofb.show{display:block}
+.ofb.bad{border-left-color:#d9534f; background:rgba(217,83,79,.12)}
+.ofb .py{font-weight:600}
+.ofb .zh{font-size:.85rem}
+@media (max-width:640px){
+  body{font-size:15px}
+  .wrap{padding:0 14px 60px}
+  header.hero{padding:26px 0 14px}
+  h1{font-size:1.45rem}
+  h2{font-size:1.25rem}
+  .hero .hanzi-big{display:none}
+  nav.toc{gap:6px; padding:8px 0}
+  nav.toc a{font-size:.78rem; padding:3px 10px}
+  section{margin-top:32px}
+  .exam-grid{grid-template-columns:1fr}
+  .card{padding:14px 14px}
+  .lesson-body{padding:6px 12px 14px}
+  details.lesson>summary{padding:12px 12px; gap:10px}
+  .gram{padding:10px 12px}
+  .q{padding:10px 12px}
+  th,td{padding:6px 6px}
+  td.py{font-size:1rem}
+  .callout{padding:10px 12px}
+}
+</style>
+</head>
+<body>
+
+<div class="wrap">
+
+<header class="hero">
+  <span class="hanzi-big">Jiāyóu!</span>
+  <div class="eyebrow">Chino Mandarim Básico 2 · Prova Final</div>
+  <h1>Guia de Estudos HSK 2 — Lições 1 a 8</h1>
+  <p class="sub"><strong>Versão focada em pinyin</strong> — o pinyin é o texto principal em tudo; os caracteres aparecem pequenos, só como referência. A prova aceita respostas em pinyin, então é nele que você treina.</p>
+</header>
+
+<nav class="toc">
+  <a href="#prova">Como é a prova</a>
+  <a href="#gramatica">Gramática por lição</a>
+  <a href="#vocab">Vocabulário</a>
+  <a href="#simulado">Simulado</a>
+  <a href="#redacao">Redação</a>
+  <a href="#oral">Oral</a>
+  <a href="#dicas">Dicas finais</a>
+  <a class="ext" href="treino-audicao.html">🎧 Treino de audição</a>
+</nav>
+
+<!-- ============ COMO É A PROVA ============ -->
+<section id="prova">
+  <div class="sec-head"><h2>Como é a prova</h2><span class="zh-label">kǎoshì jiégòu</span></div>
+  <p>Duração de <strong>120 minutos</strong>. A prova final vale <strong>55% da nota</strong> (presença 10%, participação 15%, tarefas 20%). São 7 seções:</p>
+  <div class="exam-grid">
+    <div class="part"><span class="n">一 · Parte 1</span><span class="pts">20 pts</span><div class="t">Compreensão auditiva</div><p>10 questões, 2 pts cada. Você ouve diálogos curtos e escolhe A/B/C. <strong>As alternativas vêm escritas com pinyin em cima dos caracteres</strong> — dá para responder só pelo pinyin. Caem: cores, preços, anos, transportes, lugares, atividades.</p></div>
+    <div class="part"><span class="n">二 · Parte 2</span><span class="pts">15 pts</span><div class="t">Associação de palavras</div><p>15 questões, 1 pt cada. Ligar a palavra (que vem com pinyin do lado) ao significado em português.</p></div>
+    <div class="part"><span class="n">三 · Parte 3</span><span class="pts">10 pts</span><div class="t">Julgar frases √ / ×</div><p>5 questões, 2 pts cada. As frases vêm escritas <strong>também em pinyin</strong> no modelo. Ler e decidir se a afirmação sobre a frase está certa (√) ou errada (×).</p></div>
+    <div class="part"><span class="n">四 · Parte 4</span><span class="pts">15 pts</span><div class="t">Completar lacunas</div><p>10 questões, 1,5 pt cada. Escolher, de um banco de 10 palavras (com pinyin), a que completa cada frase (também com pinyin).</p></div>
+    <div class="part"><span class="n">五 · Parte 5</span><span class="pts">20 pts</span><div class="t">Reordenar palavras</div><p>10 questões, 2 pts cada. Colocar pedaços numerados na ordem certa. Você responde só com os números (ex.: ③①②④) — não precisa escrever caracteres!</p></div>
+    <div class="part"><span class="n">六 · Parte 6</span><span class="pts">10 pts</span><div class="t">Redação</div><p>Mínimo de 40 caracteres e <strong>o modelo diz explicitamente: resposta permitida em pinyin</strong>. Tema do modelo: sua rotina diária.</p></div>
+    <div class="part"><span class="n">七 · Parte 7</span><span class="pts">10 pts</span><div class="t">Oral</div><p>Ouvir e repetir 3 frases (6 pts) + responder 2 perguntas sobre sua vida real (4 pts). Aqui é só fala — caracteres não importam.</p></div>
+  </div>
+  <div class="callout jade"><strong>Boa notícia:</strong> olhando o modelo, praticamente toda a prova dá para fazer sem ler caracteres — tudo vem com pinyin, a Parte 5 se responde com números e a redação pode ser em pinyin. O que decide sua nota é <strong>vocabulário + ordem das palavras + tons</strong>.</div>
+  <div class="callout"><strong>Atenção:</strong> o modelo cobre o livro inteiro (15 lições), mas sua prova vai <strong>só até a lição 8</strong>. Algumas questões do modelo usam gramática das lições 9–15 — comparação com <em>bǐ</em>, complemento com <em>de</em> (<em>shuō de hěn hǎo</em>), <em>zhe</em>, <em>guo</em> de experiência e <em>kuàiyào…le</em>. Provavelmente não caem na sua — confirme com a professora.</div>
+</section>
+
+<!-- ============ GRAMÁTICA ============ -->
+<section id="gramatica">
+  <div class="sec-head"><h2>Gramática por lição</h2><span class="zh-label">yǔfǎ</span></div>
+  <p>Clique em cada lição para abrir. São exatamente os pontos ensinados nos slides. Em cada exemplo: <strong>pinyin grande</strong>, tradução, e os caracteres pequenos só de referência.</p>
+
+  <details class="lesson" open>
+    <summary><span class="lnum">1</span><span class="ttl"><span class="py-t">Jiǔyuè qù Běijīng lǚyóu zuì hǎo</span><span class="pt-t">Setembro é a melhor época para visitar Pequim</span></span></summary>
+    <div class="lesson-body">
+      <div class="gram"><div class="pattern"><em>zuì</em> + adjetivo · <em>zuì xiǎng / zuì xǐhuan</em> + verbo</div><div class="use">Superlativo: "o mais…". Indica o primeiro lugar entre coisas do mesmo tipo.</div>
+        <div class="ex"><span class="py">Wǒ zuì xǐhuan tī zúqiú.</span><span class="tr">O que eu mais gosto é de jogar futebol.</span><span class="zh">我最喜欢踢足球。</span></div></div>
+      <div class="gram"><div class="pattern">Sujeito + <em>yào</em> + verbo</div><div class="use">Vontade forte / decisão ("vou / quero"). Negação: <em>bù xiǎng</em>. Pergunta: <em>yào bu yào…?</em></div>
+        <div class="ex"><span class="py">Wǒ yào qù Běijīng lǚyóu.</span><span class="tr">Eu vou viajar para Pequim.</span><span class="zh">我要去北京旅游。</span></div>
+        <div class="ex"><span class="py">Tā jīntiān bù xiǎng qù yínháng.</span><span class="tr">Ela não quer ir ao banco hoje.</span><span class="zh">她今天不想去银行。</span></div></div>
+      <div class="gram"><div class="pattern"><em>yě</em> — também</div><div class="use">Sempre antes do verbo. Com negação, <em>yě</em> vem antes de <em>bù</em>: "também não". Estrutura <em>bù A yě bù B</em> = "nem A nem B".</div>
+        <div class="ex"><span class="py">Jiǔyuè de Běijīng tiānqì bù lěng yě bú rè.</span><span class="tr">Em setembro, o clima de Pequim não é frio nem quente.</span><span class="zh">九月的北京天气不冷也不热。</span></div></div>
+      <div class="gram"><div class="pattern"><em>ba</em> no fim da frase</div><div class="use">Sugestão, convite ou pedido educado: "vamos…, que tal…".</div>
+        <div class="ex"><span class="py">Xiàwǔ wǒmen yìqǐ qù tī zúqiú ba.</span><span class="tr">Vamos jogar futebol juntos à tarde!</span><span class="zh">下午我们一起去踢足球吧。</span></div></div>
+      <div class="gram"><div class="pattern"><em>jǐ / duō</em> — números aproximados</div><div class="use"><em>jǐ</em> + classificador = "alguns" (até 10). <em>shí jǐ ge</em> = entre 11 e 19; <em>èrshí duō ge</em> = vinte e poucos. Com número menor que 10, <em>duō</em> vem depois do classificador: <em>liù ge duō yuè</em> = seis meses e pouco.</div>
+        <div class="ex"><span class="py">Wǒmen yào bu yào mǎi jǐ ge xīn de yǐzi?</span><span class="tr">Vamos comprar algumas cadeiras novas?</span><span class="zh">我们要不要买几个新的椅子？</span></div>
+        <div class="ex"><span class="py">Tā liù ge duō yuè le.</span><span class="tr">Ele (o gato) tem seis meses e pouco.</span><span class="zh">它六个多月了。</span></div></div>
+    </div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">2</span><span class="ttl"><span class="py-t">Wǒ měi tiān liù diǎn qǐchuáng</span><span class="pt-t">Eu me levanto às seis todo dia</span></span></summary>
+    <div class="lesson-body">
+      <div class="gram"><div class="pattern"><em>měi</em> + classificador + subst. + (<em>dōu</em>) + verbo</div><div class="use">"Cada / todo". Quase sempre com <em>dōu</em>: <em>měi tiān dōu…, měi ge xīngqī dōu…, měi nián dōu…</em></div>
+        <div class="ex"><span class="py">Wǒ měi tiān liù diǎn qǐchuáng.</span><span class="tr">Eu levanto às seis todos os dias.</span><span class="zh">我每天六点起床。</span></div>
+        <div class="ex"><span class="py">Shānmǔ měi nián dōu qù Zhōngguó lǚyóu.</span><span class="tr">Sam viaja para a China todos os anos.</span><span class="zh">山姆每年都去中国旅游。</span></div></div>
+      <div class="gram"><div class="pattern">S + <em>shì bu shì</em> + …?</div><div class="use">Confirmar uma suposição: "não é verdade que…?". Não se usa junto com <em>ma</em>.</div>
+        <div class="ex"><span class="py">Nǐ hěn shǎo shēngbìng, shì bu shì xǐhuan yùndòng?</span><span class="tr">Você quase não fica doente — é porque gosta de esportes, né?</span><span class="zh">你很少生病，是不是喜欢运动？</span></div></div>
+      <div class="gram"><div class="pattern">S + <em>duō</em> + adjetivo?</div><div class="use">Perguntar grau/medida: <em>duō dà</em> (que idade), <em>duō gāo</em> (que altura), <em>duō yuǎn</em> (que distância), <em>duō cháng</em> (que comprimento).</div>
+        <div class="ex"><span class="py">Tā duō gāo? — Yì mǐ bā jǐ.</span><span class="tr">Qual a altura dele? — Um metro e oitenta e poucos.</span><span class="zh">他多高？——一米八几。</span></div></div>
+      <div class="gram"><div class="pattern">Adjetivo + <em>duō le</em></div><div class="use">"Muito mais…" — melhora ou contraste grande.</div>
+        <div class="ex"><span class="py">Chī yào le, xiànzài hǎo duō le.</span><span class="tr">Tomei o remédio, agora estou bem melhor.</span><span class="zh">吃药了，现在好多了。</span></div></div>
+    </div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">3</span><span class="ttl"><span class="py-t">Zuǒbiān nà ge hóngsè de shì wǒ de</span><span class="pt-t">O vermelho à esquerda é o meu</span></span></summary>
+    <div class="lesson-body">
+      <div class="gram"><div class="pattern">Pron./Subst./Adj./Frase + <em>de</em> (sem substantivo depois)</div><div class="use">"O de…, o que é…": o substantivo fica subentendido.</div>
+        <div class="ex"><span class="py">Zuǒbiān nà ge hóngsè de shì wǒ de.</span><span class="tr">O vermelho à esquerda é o meu.</span><span class="zh">左边那个红色的是我的。</span></div>
+        <div class="ex"><span class="py">Zhè kuài shǒubiǎo tā mǎi de.</span><span class="tr">Este relógio foi ela que comprou.</span><span class="zh">这块手表她买的。</span></div></div>
+      <div class="gram"><div class="pattern">Verbo + <em>yíxià</em></div><div class="use">Ação breve, rápida ou tentativa; suaviza o tom: "dar uma olhada, perguntar rapidinho".</div>
+        <div class="ex"><span class="py">Wǒ kàn yíxià. / Wǒ wèn yíxià lǎoshī.</span><span class="tr">Deixa eu dar uma olhada. / Vou perguntar ao professor.</span><span class="zh">我看一下。/ 我问一下老师。</span></div></div>
+      <div class="gram"><div class="pattern"><em>zhēn</em> + adjetivo</div><div class="use">Exclamação: "realmente, de fato!".</div>
+        <div class="ex"><span class="py">Nǐ nǚ'ér de fángjiān zhēn piàoliang!</span><span class="tr">O quarto da sua filha é lindo mesmo!</span><span class="zh">你女儿的房间真漂亮！</span></div></div>
+      <div class="gram"><div class="pattern">Palavras de posição</div><div class="use"><em>zuǒbiān</em> esquerda · <em>yòubiān</em> direita · <em>qiánbiān</em> frente · <em>hòubiān</em> atrás · <em>pángbiān</em> ao lado · <em>zhōngjiān</em> no meio · <em>wàimiàn</em> fora · <em>lǐmiàn</em> dentro.</div>
+        <div class="ex"><span class="py">Yīyuàn zài nà ge xiǎo shāngdiàn pángbiān.</span><span class="tr">O hospital fica ao lado daquela lojinha.</span><span class="zh">医院在那个小商店旁边。</span></div></div>
+    </div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">4</span><span class="ttl"><span class="py-t">Zhège gōngzuò shì tā bāng wǒ jièshào de</span><span class="pt-t">Foi ele que me indicou este trabalho</span></span></summary>
+    <div class="lesson-body">
+      <div class="gram"><div class="pattern">Objeto + <em>shì</em> + quem + verbo + <em>de</em></div><div class="use">Enfatiza quem fez uma ação já conhecida: "foi X que…".</div>
+        <div class="ex"><span class="py">Zhè běn shū shì wǒ xiě de.</span><span class="tr">Este livro fui eu que escrevi.</span><span class="zh">这本书是我写的。</span></div>
+        <div class="ex"><span class="py">Diànhuà shì shéi dǎ de?</span><span class="tr">Quem foi que ligou?</span><span class="zh">电话是谁打的？</span></div></div>
+      <div class="gram"><div class="pattern"><em>yǐjīng</em> + verbo/adj. + <em>le</em></div><div class="use">"Já" — ação concluída ou grau atingido. Também com hora/idade: <em>yǐjīng bā diǎn le</em> (já são 8h).</div>
+        <div class="ex"><span class="py">Wǒ de shēntǐ yǐjīng hǎo le.</span><span class="tr">Eu já estou bom (recuperado).</span><span class="zh">我的身体已经好了。</span></div></div>
+      <div class="gram"><div class="pattern">Tempo/Verbo + <em>de shíhou</em></div><div class="use">"Quando… / na hora de…".</div>
+        <div class="ex"><span class="py">Wǒ shíyī suì de shíhou kāishǐ tī zúqiú.</span><span class="tr">Comecei a jogar futebol aos onze anos.</span><span class="zh">我十一岁的时候开始踢足球。</span></div></div>
+      <div class="gram"><div class="pattern"><em>gěi</em> + pessoa + verbo · verbo + <em>gěi</em> + pessoa</div><div class="use">"Para/a alguém": entrega ou destinatário da ação.</div>
+        <div class="ex"><span class="py">Zhè shì sòng gěi nǐ de!</span><span class="tr">Isto é um presente para você!</span><span class="zh">这是送给你的！</span></div></div>
+      <div class="gram"><div class="pattern"><em>duō cháng shíjiān</em> — quanto tempo</div>
+        <div class="ex"><span class="py">Nǐ xué Hànyǔ duō cháng shíjiān le? — Yǐjīng liǎng nián duō le.</span><span class="tr">Há quanto tempo você estuda chinês? — Já faz mais de dois anos.</span><span class="zh">你学汉语多长时间了？——已经两年多了。</span></div></div>
+    </div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">5</span><span class="ttl"><span class="py-t">Jiù mǎi zhè jiàn ba</span><span class="pt-t">Fico com esta (peça) então</span></span></summary>
+    <div class="lesson-body">
+      <div class="gram"><div class="pattern">…, <em>jiù</em> + verbo (+ <em>ba</em>)</div><div class="use">Conclusão ou decisão a partir do que foi dito: "então…".</div>
+        <div class="ex"><span class="py">Zhè jiàn búcuò, jiù mǎi zhè jiàn ba.</span><span class="tr">Esta é boa — então fico com esta.</span><span class="zh">这件不错，就买这件吧。</span></div>
+        <div class="ex"><span class="py">Nǐ bù xiǎng qù, jiù zài jiā xiūxi ba.</span><span class="tr">Se você não quer ir, então descanse em casa.</span><span class="zh">你不想去，就在家休息吧。</span></div></div>
+      <div class="gram"><div class="pattern"><em>hái</em> + adjetivo — "razoável, dá pro gasto"</div><div class="use"><em>hái hǎo, hái xíng, hái kěyǐ, hái búcuò</em> = mais ou menos, aceitável.</div>
+        <div class="ex"><span class="py">Wǒ juéde tīng hé shuō hái kěyǐ, dú hé xiě bù hǎo.</span><span class="tr">Acho que escutar e falar estão ok; ler e escrever, não.</span><span class="zh">我觉得听和说还可以，读和写不好。</span></div></div>
+      <div class="gram"><div class="pattern"><em>yǒudiǎnr</em> + adj. ✕ adj. + <em>yìdiǎnr</em></div><div class="use"><em>yǒudiǎnr</em> ANTES do adjetivo = reclamação ("um pouco… demais"). <em>yìdiǎnr</em> DEPOIS do adjetivo = comparação ou desejo ("um pouco mais…").</div>
+        <div class="ex"><span class="py">Zhè jiàn yīfu yǒudiǎnr dà, yǒu méiyǒu xiǎo yìdiǎnr de?</span><span class="tr">Esta roupa está um pouco grande — tem uma um pouco menor?</span><span class="zh">这件衣服有点儿大，有没有小一点儿的？</span></div></div>
+      <div class="gram"><div class="pattern"><em>duì</em> + subst. + <em>hǎo / bù hǎo</em></div><div class="use">"Faz bem / faz mal para…".</div>
+        <div class="ex"><span class="py">Kāfēi hē duō le duì shēntǐ bù hǎo.</span><span class="tr">Tomar café demais faz mal à saúde.</span><span class="zh">咖啡喝多了对身体不好。</span></div></div>
+      <div class="gram"><div class="pattern"><em>yǐhòu</em> — depois</div>
+        <div class="ex"><span class="py">Xiàkè yǐhòu wǒmen yìqǐ qù dǎqiú ba.</span><span class="tr">Depois da aula, vamos jogar bola juntos.</span><span class="zh">下课以后我们一起去打球吧。</span></div></div>
+      <div class="gram"><div class="pattern">Classificadores</div><div class="use"><em>jiàn</em> roupas/assuntos · <em>tiáo</em> coisas compridas (calça, peixe, rua) · <em>kuài</em> dinheiro/pedaço · <em>bēi</em> copo de · <em>běn</em> livros · <em>kǒu</em> pessoas da família · <em>ge</em> geral.</div>
+        <div class="ex"><span class="py">yí jiàn yīfu · yì tiáo yú · shí kuài qián · yì bēi kāfēi · yì běn shū · sān kǒu rén</span><span class="tr">uma roupa · um peixe · dez yuans · um café · um livro · família de três</span><span class="zh">一件衣服 · 一条鱼 · 十块钱 · 一杯咖啡 · 一本书 · 三口人</span></div></div>
+    </div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">6</span><span class="ttl"><span class="py-t">Nǐ zěnme bù chī le</span><span class="pt-t">Por que você parou de comer?</span></span></summary>
+    <div class="lesson-body">
+      <div class="gram"><div class="pattern">S + <em>zěnme</em> + verbo/adjetivo?</div><div class="use">Pergunta o motivo com surpresa/estranheza: "como assim…? por que…?".</div>
+        <div class="ex"><span class="py">Jīntiān de yángròu hěn hǎochī, nǐ zěnme bù chī le?</span><span class="tr">O carneiro hoje está ótimo — por que você parou de comer?</span><span class="zh">今天的羊肉很好吃，你怎么不吃了？</span></div>
+        <div class="ex"><span class="py">Zuótiān nǐmen zěnme dōu méi qù dǎ lánqiú?</span><span class="tr">Por que vocês não foram jogar basquete ontem?</span><span class="zh">昨天你们怎么都没去打篮球？</span></div></div>
+      <div class="gram"><div class="pattern">Classificador duplicado + <em>dōu</em></div><div class="use">Reduplicação = "cada um, todos sem exceção": <em>gège, jiànjiàn, tiāntiān</em>.</div>
+        <div class="ex"><span class="py">Zhège xīngqī wǒ tiāntiān dōu chī yángròu.</span><span class="tr">Esta semana eu comi carneiro todo santo dia.</span><span class="zh">这个星期我天天都吃羊肉。</span></div></div>
+      <div class="gram"><div class="pattern"><em>yīnwèi</em>… <em>suǒyǐ</em>…</div><div class="use">"Porque… então/por isso…". Pode-se usar as duas juntas ou só uma.</div>
+        <div class="ex"><span class="py">Yīnwèi zuótiān xiàyǔ, suǒyǐ wǒmen dōu méi qù.</span><span class="tr">Como ontem choveu, nenhum de nós foi.</span><span class="zh">因为昨天下雨，所以我们都没去。</span></div></div>
+    </div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">7</span><span class="ttl"><span class="py-t">Nǐ jiā lí gōngsī yuǎn ma</span><span class="pt-t">Você mora longe da empresa?</span></span></summary>
+    <div class="lesson-body">
+      <div class="gram"><div class="pattern">A + <em>lí</em> + B + <em>jìn/yuǎn</em> · A + <em>lí</em> + B + <em>yǒu</em> + distância</div><div class="use">Distância entre lugares — e também até um momento: A <em>lí</em> B <em>hái yǒu</em> + tempo ("ainda falta…").</div>
+        <div class="ex"><span class="py">Wǒ jiā lí xuéxiào bú tài yuǎn.</span><span class="tr">Minha casa não fica muito longe da escola.</span><span class="zh">我家离学校不太远。</span></div>
+        <div class="ex"><span class="py">Lí wǒ de shēngrì hái yǒu yí ge duō xīngqī ne!</span><span class="tr">Ainda falta mais de uma semana para o meu aniversário!</span><span class="zh">离我的生日还有一个多星期呢！</span></div></div>
+      <div class="gram"><div class="pattern"><em>hái / hái méi</em> + verbo — "ainda / ainda não"</div><div class="use">Continuação de uma ação ou estado.</div>
+        <div class="ex"><span class="py">Tā hái zài jiàoshì xuéxí ne. / Tāmen hái méi huí jiā.</span><span class="tr">Ele ainda está estudando na sala. / Eles ainda não voltaram para casa.</span><span class="zh">他还在教室学习呢。/ 他们还没回家。</span></div></div>
+      <div class="gram"><div class="pattern">Tempo + <em>jiù</em> + verbo (+ <em>le</em>)</div><div class="use">Enfatiza que algo aconteceu cedo, rápido ou sem problema.</div>
+        <div class="ex"><span class="py">Èrshí fēnzhōng jiù dào. / Zuò fēijī liǎng ge xiǎoshí jiù dào le.</span><span class="tr">Em vinte minutos chego. / De avião, em duas horas já se chega.</span><span class="zh">二十分钟就到。/ 坐飞机两个小时就到了。</span></div></div>
+      <div class="gram"><div class="pattern"><em>hǎohāo</em> + verbo</div><div class="use">Fazer algo "direito, com capricho".</div>
+        <div class="ex"><span class="py">Míngtiān yǒu kǎoshì, jīntiān yào hǎohāo zhǔnbèi.</span><span class="tr">Amanhã tem prova; hoje é preciso se preparar direito.</span><span class="zh">明天有考试，今天要好好准备。</span></div></div>
+      <div class="gram"><div class="pattern">Os 3 usos de <em>yào</em></div><div class="use">① <em>yào</em> + substantivo = querer/pedir (<em>Wǒ yào yì bēi kāfēi</em> — quero um café) · ② <em>yào</em> + verbo = ir fazer/planejar (<em>Wǒ míngtiān yào qù Shànghǎi</em>) · ③ <em>yào</em> + tempo/dinheiro = precisar de/levar (<em>Zuò huǒchē yào jǐ ge xiǎoshí?</em> — de trem leva quantas horas?).</div></div>
+      <div class="gram"><div class="pattern"><em>ne</em> no fim da frase</div><div class="use">① "E você?" (<em>Nǐ ne?</em>) · ② onde está? (<em>Wǒ de bēizi ne?</em>) · ③ confirmar com ênfase/exagero (<em>Zuò gōnggòng qìchē yào yí ge duō xiǎoshí ne!</em> — de ônibus leva mais de uma hora, viu!).</div></div>
+    </div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">8</span><span class="ttl"><span class="py-t">Ràng wǒ xiǎngxiang zài gàosu nǐ</span><span class="pt-t">Deixa eu pensar e depois te conto</span></span></summary>
+    <div class="lesson-body">
+      <div class="gram"><div class="pattern">Reduplicação de verbos: AA · A-yi-A · ABAB · AAB</div><div class="use">Ação curta, leve, tentativa; tom informal. <em>kàn → kànkan / kàn yi kàn</em> · <em>xuéxí → xuéxí xuéxí</em> · <em>shuìjiào → shuì shuijiào</em>.</div>
+        <div class="ex"><span class="py">Ràng wǒ zài kànkan. / Wǒmen chūqù yùndong yùndong ba!</span><span class="tr">Deixa eu olhar mais um pouco. / Vamos sair para nos exercitar um pouco!</span><span class="zh">让我再看看。/ 我们出去运动运动吧！</span></div></div>
+      <div class="gram"><div class="pattern">Os 3 usos de <em>zài</em> (de novo/depois)</div><div class="use">① repetir: <em>zài</em> + V + número (<em>Wǒ xiǎng zài chī yí ge píngguǒ</em> — quero comer mais uma maçã) · ② continuar: <em>zài</em> + V + tempo (<em>Wǒ zài shuì shí fēnzhōng</em> — vou dormir mais 10 min) · ③ "depois de": V1 (+<em>le</em>) + <em>zài</em> + V2 (<em>Wǒmen xiàkè le zài qù kàn diànyǐng</em>).</div>
+        <div class="ex"><span class="py">Ràng wǒ xiǎngxiang zài gàosu nǐ.</span><span class="tr">Deixa eu pensar e depois te conto.</span><span class="zh">让我想想再告诉你。</span></div></div>
+      <div class="gram"><div class="pattern">A + <em>ràng / jiào / qǐng</em> + B + fazer algo</div><div class="use">Frase pivô: A pede/manda/convida e B faz. <em>ràng</em> deixar/fazer com que · <em>jiào</em> mandar · <em>qǐng</em> pedir (educado).</div>
+        <div class="ex"><span class="py">Wáng lǎoshī ràng wǒ gěi Dàwèi dǎ ge diànhuà.</span><span class="tr">O professor Wang me pediu para ligar para o Davi.</span><span class="zh">王老师让我给大卫打个电话。</span></div></div>
+      <div class="gram"><div class="pattern">…, <em>hǎo ma?</em></div><div class="use">Pedir a opinião do outro: "…tá bom? pode ser?".</div>
+        <div class="ex"><span class="py">Wǒmen xiàwǔ qù kàn diànyǐng, hǎo ma?</span><span class="tr">Vamos ao cinema à tarde, pode ser?</span><span class="zh">我们下午去看电影，好吗？</span></div></div>
+      <div class="gram"><div class="pattern">Os sentidos de <em>dǎ</em></div><div class="use">① <em>dǎ diànhuà</em> ligar · ② <em>dǎ chē</em> pegar táxi · ③ <em>dǎ lánqiú / dǎ wǎngqiú</em> jogar (com as mãos) · ④ <em>mén dǎ bu kāi</em> a porta não abre.</div></div>
+    </div>
+  </details>
+</section>
+
+<!-- ============ VOCABULÁRIO ============ -->
+<section id="vocab">
+  <div class="sec-head"><h2>Vocabulário por lição</h2><span class="zh-label">shēngcí</span></div>
+  <div class="tools">
+    <button class="rev" id="togglePT">🙈 Esconder traduções (modo treino)</button>
+    <span class="pill">No modo treino, clique na tradução para revelar</span>
+  </div>
+
+  <details class="lesson" open>
+    <summary><span class="lnum">1</span><span class="ttl"><span class="pt-t" style="font-size:.95rem">Esportes e viagens</span></span></summary>
+    <div class="lesson-body tablebox"><table class="vt">
+      <tr><th>Pinyin</th><th>Português</th><th>Hanzi</th></tr>
+      <tr><td class="py">tī zúqiú</td><td class="pt">jogar futebol</td><td class="hz zh">踢足球</td></tr>
+      <tr><td class="py">yùndòng</td><td class="pt">esporte; praticar esportes</td><td class="hz zh">运动</td></tr>
+      <tr><td class="py">yìqǐ</td><td class="pt">juntos</td><td class="hz zh">一起</td></tr>
+      <tr><td class="py">juéde</td><td class="pt">achar (opinião)</td><td class="hz zh">觉得</td></tr>
+      <tr><td class="py">wèi shénme</td><td class="pt">por quê</td><td class="hz zh">为什么</td></tr>
+      <tr><td class="py">lǚyóu</td><td class="pt">viajar</td><td class="hz zh">旅游</td></tr>
+      <tr><td class="py">yě</td><td class="pt">também</td><td class="hz zh">也</td></tr>
+      <tr><td class="py">zuì</td><td class="pt">o mais (superlativo)</td><td class="hz zh">最</td></tr>
+      <tr><td class="py">xīn</td><td class="pt">novo</td><td class="hz zh">新</td></tr>
+      <tr><td class="py">tā</td><td class="pt">ele/ela (animal ou coisa)</td><td class="hz zh">它</td></tr>
+      <tr><td class="py">yǎnjing</td><td class="pt">olho</td><td class="hz zh">眼睛</td></tr>
+    </table></div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">2</span><span class="ttl"><span class="pt-t" style="font-size:.95rem">Rotina e saúde</span></span></summary>
+    <div class="lesson-body tablebox"><table class="vt">
+      <tr><th>Pinyin</th><th>Português</th><th>Hanzi</th></tr>
+      <tr><td class="py">xiūxi</td><td class="pt">descansar</td><td class="hz zh">休息</td></tr>
+      <tr><td class="py">máng</td><td class="pt">ocupado</td><td class="hz zh">忙</td></tr>
+      <tr><td class="py">shíjiān</td><td class="pt">tempo</td><td class="hz zh">时间</td></tr>
+      <tr><td class="py">měi</td><td class="pt">cada, todo</td><td class="hz zh">每</td></tr>
+      <tr><td class="py">shēngbìng</td><td class="pt">ficar doente</td><td class="hz zh">生病</td></tr>
+      <tr><td class="py">zǎoshang</td><td class="pt">de manhã</td><td class="hz zh">早上</td></tr>
+      <tr><td class="py">qǐchuáng</td><td class="pt">levantar-se</td><td class="hz zh">起床</td></tr>
+      <tr><td class="py">pǎobù</td><td class="pt">correr</td><td class="hz zh">跑步</td></tr>
+      <tr><td class="py">yào</td><td class="pt">remédio</td><td class="hz zh">药</td></tr>
+      <tr><td class="py">shēntǐ</td><td class="pt">corpo; saúde</td><td class="hz zh">身体</td></tr>
+      <tr><td class="py">chūyuàn</td><td class="pt">receber alta (do hospital)</td><td class="hz zh">出院</td></tr>
+      <tr><td class="py">gāo</td><td class="pt">alto</td><td class="hz zh">高</td></tr>
+      <tr><td class="py">mǐ</td><td class="pt">metro</td><td class="hz zh">米</td></tr>
+      <tr><td class="py">zhīdào</td><td class="pt">saber</td><td class="hz zh">知道</td></tr>
+      <tr><td class="py">shuìjiào</td><td class="pt">dormir</td><td class="hz zh">睡觉</td></tr>
+    </table></div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">3</span><span class="ttl"><span class="pt-t" style="font-size:.95rem">Objetos, cores e posições</span></span></summary>
+    <div class="lesson-body tablebox"><table class="vt">
+      <tr><th>Pinyin</th><th>Português</th><th>Hanzi</th></tr>
+      <tr><td class="py">shǒubiǎo</td><td class="pt">relógio de pulso</td><td class="hz zh">手表</td></tr>
+      <tr><td class="py">zuǒbiān</td><td class="pt">esquerda</td><td class="hz zh">左边</td></tr>
+      <tr><td class="py">bàozhǐ</td><td class="pt">jornal</td><td class="hz zh">报纸</td></tr>
+      <tr><td class="py">niúnǎi</td><td class="pt">leite</td><td class="hz zh">牛奶</td></tr>
+      <tr><td class="py">fángjiān</td><td class="pt">quarto</td><td class="hz zh">房间</td></tr>
+      <tr><td class="py">zhàngfu</td><td class="pt">marido</td><td class="hz zh">丈夫</td></tr>
+      <tr><td class="py">qiān</td><td class="pt">mil</td><td class="hz zh">千</td></tr>
+      <tr><td class="py">yánsè</td><td class="pt">cor</td><td class="hz zh">颜色</td></tr>
+      <tr><td class="py">sòng</td><td class="pt">entregar; presentear</td><td class="hz zh">送</td></tr>
+      <tr><td class="py">yíxià</td><td class="pt">(dar) uma…; rapidinho</td><td class="hz zh">一下</td></tr>
+      <tr><td class="py">pángbiān</td><td class="pt">ao lado</td><td class="hz zh">旁边</td></tr>
+      <tr><td class="py">zhēn</td><td class="pt">realmente, de fato</td><td class="hz zh">真</td></tr>
+      <tr><td class="py">hóngsè / hēisè / báisè</td><td class="pt">vermelho / preto / branco</td><td class="hz zh">红色 / 黑色 / 白色</td></tr>
+    </table></div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">4</span><span class="ttl"><span class="pt-t" style="font-size:.95rem">Aniversário e trabalho</span></span></summary>
+    <div class="lesson-body tablebox"><table class="vt">
+      <tr><th>Pinyin</th><th>Português</th><th>Hanzi</th></tr>
+      <tr><td class="py">shēngrì</td><td class="pt">aniversário</td><td class="hz zh">生日</td></tr>
+      <tr><td class="py">kuàilè</td><td class="pt">feliz</td><td class="hz zh">快乐</td></tr>
+      <tr><td class="py">gěi</td><td class="pt">para; dar</td><td class="hz zh">给</td></tr>
+      <tr><td class="py">jiē</td><td class="pt">atender (telefone); buscar (alguém)</td><td class="hz zh">接</td></tr>
+      <tr><td class="py">wèn</td><td class="pt">perguntar</td><td class="hz zh">问</td></tr>
+      <tr><td class="py">wǎnshang</td><td class="pt">noite</td><td class="hz zh">晚上</td></tr>
+      <tr><td class="py">fēicháng</td><td class="pt">muito, extremamente</td><td class="hz zh">非常</td></tr>
+      <tr><td class="py">kāishǐ</td><td class="pt">começar</td><td class="hz zh">开始</td></tr>
+      <tr><td class="py">yǐjīng</td><td class="pt">já</td><td class="hz zh">已经</td></tr>
+      <tr><td class="py">bāng</td><td class="pt">ajudar</td><td class="hz zh">帮</td></tr>
+      <tr><td class="py">cháng</td><td class="pt">longo, comprido</td><td class="hz zh">长</td></tr>
+      <tr><td class="py">liǎng</td><td class="pt">dois (antes de classificador)</td><td class="hz zh">两</td></tr>
+      <tr><td class="py">jièshào</td><td class="pt">apresentar; indicar</td><td class="hz zh">介绍</td></tr>
+    </table></div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">5</span><span class="ttl"><span class="pt-t" style="font-size:.95rem">Compras e opiniões</span></span></summary>
+    <div class="lesson-body tablebox"><table class="vt">
+      <tr><th>Pinyin</th><th>Português</th><th>Hanzi</th></tr>
+      <tr><td class="py">zhǔnbèi</td><td class="pt">preparar; planejar</td><td class="hz zh">准备</td></tr>
+      <tr><td class="py">wàimiàn</td><td class="pt">lá fora</td><td class="hz zh">外面</td></tr>
+      <tr><td class="py">yú</td><td class="pt">peixe</td><td class="hz zh">鱼</td></tr>
+      <tr><td class="py">jiàn</td><td class="pt">peça (classificador de roupa)</td><td class="hz zh">件</td></tr>
+      <tr><td class="py">kěyǐ</td><td class="pt">razoável; poder</td><td class="hz zh">可以</td></tr>
+      <tr><td class="py">kǎoshì</td><td class="pt">prova, exame</td><td class="hz zh">考试</td></tr>
+      <tr><td class="py">kāfēi</td><td class="pt">café</td><td class="hz zh">咖啡</td></tr>
+      <tr><td class="py">búcuò</td><td class="pt">bem bom</td><td class="hz zh">不错</td></tr>
+      <tr><td class="py">hái</td><td class="pt">razoavelmente; ainda</td><td class="hz zh">还</td></tr>
+      <tr><td class="py">yìsi</td><td class="pt">significado</td><td class="hz zh">意思</td></tr>
+      <tr><td class="py">duì</td><td class="pt">para (faz bem/mal a)</td><td class="hz zh">对</td></tr>
+      <tr><td class="py">yǐhòu</td><td class="pt">depois; futuro</td><td class="hz zh">以后</td></tr>
+      <tr><td class="py">piányi</td><td class="pt">barato</td><td class="hz zh">便宜</td></tr>
+      <tr><td class="py">guì</td><td class="pt">caro</td><td class="hz zh">贵</td></tr>
+    </table></div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">6</span><span class="ttl"><span class="pt-t" style="font-size:.95rem">Comida e causas</span></span></summary>
+    <div class="lesson-body tablebox"><table class="vt">
+      <tr><th>Pinyin</th><th>Português</th><th>Hanzi</th></tr>
+      <tr><td class="py">mén</td><td class="pt">porta</td><td class="hz zh">门</td></tr>
+      <tr><td class="py">wài</td><td class="pt">fora</td><td class="hz zh">外</td></tr>
+      <tr><td class="py">zìxíngchē</td><td class="pt">bicicleta</td><td class="hz zh">自行车</td></tr>
+      <tr><td class="py">yángròu</td><td class="pt">carne de carneiro</td><td class="hz zh">羊肉</td></tr>
+      <tr><td class="py">hǎochī</td><td class="pt">gostoso</td><td class="hz zh">好吃</td></tr>
+      <tr><td class="py">miàntiáo</td><td class="pt">macarrão</td><td class="hz zh">面条</td></tr>
+      <tr><td class="py">dǎ lánqiú</td><td class="pt">jogar basquete</td><td class="hz zh">打篮球</td></tr>
+      <tr><td class="py">yīnwèi</td><td class="pt">porque</td><td class="hz zh">因为</td></tr>
+      <tr><td class="py">suǒyǐ</td><td class="pt">então, por isso</td><td class="hz zh">所以</td></tr>
+      <tr><td class="py">yóuyǒng</td><td class="pt">nadar</td><td class="hz zh">游泳</td></tr>
+      <tr><td class="py">jīngcháng</td><td class="pt">frequentemente</td><td class="hz zh">经常</td></tr>
+      <tr><td class="py">gōngjīn</td><td class="pt">quilo</td><td class="hz zh">公斤</td></tr>
+      <tr><td class="py">jiějie</td><td class="pt">irmã mais velha</td><td class="hz zh">姐姐</td></tr>
+    </table></div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">7</span><span class="ttl"><span class="pt-t" style="font-size:.95rem">Transporte e distâncias</span></span></summary>
+    <div class="lesson-body tablebox"><table class="vt">
+      <tr><th>Pinyin</th><th>Português</th><th>Hanzi</th></tr>
+      <tr><td class="py">gōnggòng qìchē</td><td class="pt">ônibus</td><td class="hz zh">公共汽车</td></tr>
+      <tr><td class="py">màn</td><td class="pt">lento</td><td class="hz zh">慢</td></tr>
+      <tr><td class="py">kuài</td><td class="pt">rápido</td><td class="hz zh">快</td></tr>
+      <tr><td class="py">gōngsī</td><td class="pt">empresa</td><td class="hz zh">公司</td></tr>
+      <tr><td class="py">yuǎn</td><td class="pt">longe</td><td class="hz zh">远</td></tr>
+      <tr><td class="py">jìn</td><td class="pt">perto</td><td class="hz zh">近</td></tr>
+      <tr><td class="py">xiǎoshí</td><td class="pt">hora</td><td class="hz zh">小时</td></tr>
+      <tr><td class="py">guò</td><td class="pt">passar; celebrar (aniversário, ano novo)</td><td class="hz zh">过</td></tr>
+      <tr><td class="py">jiàoshì</td><td class="pt">sala de aula</td><td class="hz zh">教室</td></tr>
+      <tr><td class="py">lù</td><td class="pt">estrada, caminho</td><td class="hz zh">路</td></tr>
+      <tr><td class="py">zǒu</td><td class="pt">caminhar; ir</td><td class="hz zh">走</td></tr>
+      <tr><td class="py">jīchǎng</td><td class="pt">aeroporto</td><td class="hz zh">机场</td></tr>
+      <tr><td class="py">dào</td><td class="pt">chegar</td><td class="hz zh">到</td></tr>
+      <tr><td class="py">lí</td><td class="pt">distante de (marca distância)</td><td class="hz zh">离</td></tr>
+      <tr><td class="py">chūzūchē</td><td class="pt">táxi</td><td class="hz zh">出租车</td></tr>
+      <tr><td class="py">fēijī / huǒchē / chuán</td><td class="pt">avião / trem / barco</td><td class="hz zh">飞机 / 火车 / 船</td></tr>
+    </table></div>
+  </details>
+
+  <details class="lesson">
+    <summary><span class="lnum">8</span><span class="ttl"><span class="pt-t" style="font-size:.95rem">Pedidos e recados</span></span></summary>
+    <div class="lesson-body tablebox"><table class="vt">
+      <tr><th>Pinyin</th><th>Português</th><th>Hanzi</th></tr>
+      <tr><td class="py">gàosu</td><td class="pt">dizer, contar</td><td class="hz zh">告诉</td></tr>
+      <tr><td class="py">děng</td><td class="pt">esperar</td><td class="hz zh">等</td></tr>
+      <tr><td class="py">zhǎo</td><td class="pt">procurar</td><td class="hz zh">找</td></tr>
+      <tr><td class="py">shìqing</td><td class="pt">assunto, coisa</td><td class="hz zh">事情</td></tr>
+      <tr><td class="py">fúwùyuán</td><td class="pt">atendente, garçom</td><td class="hz zh">服务员</td></tr>
+      <tr><td class="py">bái</td><td class="pt">branco</td><td class="hz zh">白</td></tr>
+      <tr><td class="py">hēi</td><td class="pt">preto</td><td class="hz zh">黑</td></tr>
+      <tr><td class="py">ràng</td><td class="pt">deixar; fazer com que</td><td class="hz zh">让</td></tr>
+      <tr><td class="py">zài</td><td class="pt">de novo; depois</td><td class="hz zh">再</td></tr>
+      <tr><td class="py">jiào</td><td class="pt">mandar, chamar</td><td class="hz zh">叫</td></tr>
+      <tr><td class="py">qǐng</td><td class="pt">pedir (educado); convidar</td><td class="hz zh">请</td></tr>
+    </table></div>
+  </details>
+</section>
+
+<!-- ============ SIMULADO ============ -->
+<section id="simulado">
+  <div class="sec-head"><h2>Simulado no formato da prova</h2><span class="zh-label">mónǐ kǎoshì</span></div>
+  <p>Mesmo formato do modelo oficial, mas usando <strong>apenas conteúdo das lições 1–8</strong> e todo em pinyin. Agora é <strong>interativo</strong>: clique para responder e veja na hora se acertou.</p>
+
+  <h3>二 · Associação de palavras <span class="pill">clique numa palavra, depois no significado</span></h3>
+  <div id="matchWrap"></div>
+
+  <h3>三 · Julgue: √ ou × <span class="pill">clique em √ ou ×</span></h3>
+  <div id="judgeWrap"></div>
+
+  <h3>四 · Complete com a palavra certa <span class="pill">escolha a letra no menu</span></h3>
+  <div class="card" style="padding:12px 16px">
+    <strong style="font-size:.9rem">Banco de palavras:</strong>
+    <div class="bank" id="fillBank"></div>
+  </div>
+  <div id="fillWrap"></div>
+
+  <h3>五 · Reordene as palavras <span class="pill">clique os números na ordem certa</span></h3>
+  <div id="orderWrap"></div>
+</section>
+
+<!-- ============ REDAÇÃO ============ -->
+<section id="redacao">
+  <div class="sec-head"><h2>Redação: sua rotina diária</h2><span class="zh-label">xiězuò</span></div>
+  <p>No modelo, a redação pede para <strong>descrever sua rotina</strong> (mínimo 40 caracteres, <strong>resposta permitida em pinyin</strong>) respondendo: a que horas levanta, o que faz de manhã/tarde, quando come e quando dorme. Isso é exatamente a lição 2 — monte a sua com este esqueleto e preencha os espaços:</p>
+  <div class="card">
+    <p class="py" style="font-size:1.1rem; line-height:2.1; font-weight:600">Wǒ měi tiān zǎoshang ____ diǎn qǐchuáng. Qǐchuáng yǐhòu wǒ qù pǎobù.<br>Shàngwǔ wǒ ____. Zhōngwǔ ____ diǎn wǒ chī wǔfàn.<br>Xiàwǔ wǒ ____. Wǎnshang ____ diǎn wǒ chī wǎnfàn.<br>Wǒ měi tiān wǎnshang ____ diǎn shuìjiào.</p>
+    <p style="font-size:.85rem; color:var(--ink-soft)">Ideias para preencher: <em>gōngzuò</em> (trabalho) · <em>xuéxí Hànyǔ</em> (estudo chinês) · <em>zài gōngsī gōngzuò</em> (trabalho na empresa) · <em>kàn shū</em> (leio) · <em>hé péngyou yìqǐ…</em> (com amigos…)</p>
+    <button class="rev">Ver exemplo completo</button>
+    <div class="ans">
+      <span class="py" style="line-height:2">Wǒ měi tiān zǎoshang liù diǎn bàn qǐchuáng, qǐchuáng yǐhòu qù pǎobù. Shàngwǔ wǒ zài gōngsī gōngzuò, zhōngwǔ shí'èr diǎn chī wǔfàn. Xiàwǔ wǒ xuéxí Hànyǔ. Wǎnshang qī diǎn wǒ hé jiārén yìqǐ chī wǎnfàn. Wǒ měi tiān wǎnshang shíyī diǎn shuìjiào.</span><br>
+      <span style="color:var(--ink-soft)">Levanto às 6h30 todos os dias e depois vou correr. De manhã trabalho na empresa e ao meio-dia almoço. À tarde estudo chinês. Às 19h janto com a família. Durmo às 23h todos os dias. <strong>(equivale a 72 caracteres — bem acima do mínimo de 40)</strong></span><br>
+      <span class="zh" style="font-size:.85rem">我每天早上六点半起床，起床以后去跑步。上午我在公司工作，中午十二点吃午饭。下午我学习汉语。晚上七点我和家人一起吃晚饭。我每天晚上十一点睡觉。</span>
+    </div>
+  </div>
+  <div class="callout jade"><strong>Truques que rendem pontos:</strong> use <em>měi tiān dōu</em>, <em>yǐhòu</em>, <em>hé … yìqǐ</em> e horários variados (<em>liù diǎn bàn, shí'èr diǎn</em>). São estruturas das lições 1–5 que mostram domínio da matéria. <strong>Decore seu texto antes da prova</strong> — a pergunta quase não muda. E capriche nos tons ao escrever o pinyin: <em>mǎi</em> (comprar) ≠ <em>mài</em> (vender)!</div>
+</section>
+
+<!-- ============ ORAL ============ -->
+<section id="oral">
+  <div class="sec-head"><h2>Parte oral</h2><span class="zh-label">kǒuyǔ</span></div>
+  <div class="card">
+    <p><strong>1. Ouvir e repetir (6 pts):</strong> serão 3 frases, cada uma repetida 2 vezes. Treine lendo em voz alta os exemplos de pinyin deste guia — principalmente os das lições 5, 7 e 8. Preste atenção nos tons: <em>mǎi</em> ✕ <em>mài</em>, <em>wèn</em> (perguntar) ✕ <em>wén</em>, <em>shíjiān</em> ✕ <em>shìqing</em>.</p>
+    <p><strong>2. Responder 2 perguntas sobre você (4 pts).</strong> Prováveis candidatas com respostas prontas:</p>
+    <div class="qs">
+      <div class="q"><div class="stem"><span class="py">Nǐ jiā lí xuéxiào yuǎn ma?</span><span class="zh">你家离学校远吗？</span><span class="tr" style="color:var(--ink-soft); font-size:.88rem">Sua casa fica longe da escola?</span></div>
+        <button class="rev">Sugestão de resposta</button><div class="ans"><span class="py">Bú tài yuǎn, zuò chē èrshí fēnzhōng jiù dào le.</span><br>Não muito; de carro chego em 20 minutos. <span class="zh">不太远，坐车二十分钟就到了。</span></div></div>
+      <div class="q"><div class="stem"><span class="py">Nǐ měi tiān jǐ diǎn qǐchuáng?</span><span class="zh">你每天几点起床？</span><span class="tr" style="color:var(--ink-soft); font-size:.88rem">A que horas você levanta todo dia?</span></div>
+        <button class="rev">Sugestão de resposta</button><div class="ans"><span class="py">Wǒ měi tiān zǎoshang qī diǎn qǐchuáng.</span><br>Levanto às 7h todos os dias. <span class="zh">我每天早上七点起床。</span></div></div>
+      <div class="q"><div class="stem"><span class="py">Jīntiān de kǎoshì zěnmeyàng?</span><span class="zh">今天的考试怎么样？</span><span class="tr" style="color:var(--ink-soft); font-size:.88rem">Como foi a prova de hoje? <span class="pill">essa está no modelo!</span></span></div>
+        <button class="rev">Sugestão de resposta</button><div class="ans"><span class="py">Hái búcuò, bú tài nán.</span><br>Foi boa, não muito difícil. (usa o hái + adj da lição 5!) <span class="zh">还不错，不太难。</span></div></div>
+      <div class="q"><div class="stem"><span class="py">Nǐ zuì xǐhuan shénme yùndòng?</span><span class="zh">你最喜欢什么运动？</span><span class="tr" style="color:var(--ink-soft); font-size:.88rem">Qual esporte você mais gosta?</span></div>
+        <button class="rev">Sugestão de resposta</button><div class="ans"><span class="py">Wǒ zuì xǐhuan tī zúqiú, wǒ měi ge xīngqī dōu hé péngyou yìqǐ tī.</span><br>Gosto mais de jogar futebol; jogo com amigos toda semana. <span class="zh">我最喜欢踢足球，我每个星期都和朋友一起踢。</span></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ DICAS ============ -->
+<section id="dicas">
+  <div class="sec-head"><h2>Dicas finais — erros clássicos</h2><span class="zh-label">zhùyì</span></div>
+  <div class="card">
+    <ul class="tight">
+      <li><strong><em>yǒudiǎnr</em> vem ANTES do adjetivo (reclamação); <em>yìdiǎnr</em> vem DEPOIS (desejo/comparação).</strong> <em>yǒudiǎnr guì</em> = "está meio caro" ✕ <em>piányi yìdiǎnr</em> = "um pouco mais barato".</li>
+      <li><strong><em>yě</em> antes de <em>bù</em>:</strong> <em>tā yě bú shì Zhōngguó rén</em> (ele também não é chinês) — nunca "bù yě".</li>
+      <li><strong><em>měi</em> pede <em>dōu</em>:</strong> <em>měi tiān <u>dōu</u> hěn máng</em>.</li>
+      <li><strong><em>shì bu shì</em> não combina com <em>ma</em></strong> na mesma frase.</li>
+      <li><strong><em>liǎng</em> ✕ <em>èr</em>:</strong> antes de classificador use <em>liǎng</em> (<em>liǎng ge xiǎoshí, liǎng bēi kāfēi</em>).</li>
+      <li><strong>Distância usa <em>lí</em>:</strong> <em>wǒ jiā lí gōngsī hěn yuǎn</em>.</li>
+      <li><strong>Negação de <em>yào</em> (querer) é <em>bù xiǎng</em>:</strong> <em>tā bù xiǎng qù yínháng</em>.</li>
+      <li><strong>Advérbios (<em>zuì, yě, dōu, yǐjīng, fēicháng, hái, jiù, zài</em>) sempre vêm antes do verbo/adjetivo.</strong></li>
+      <li><strong>Classificador certo:</strong> <em>jiàn</em> roupa · <em>tiáo</em> calça/peixe/rua · <em>kuài</em> dinheiro/relógio · <em>bēi</em> bebida · <em>běn</em> livro · <em>kǒu</em> família.</li>
+      <li><strong>Tons no pinyin escrito contam!</strong> Treine os pares: <em>mǎi</em> comprar ✕ <em>mài</em> vender · <em>yào</em> querer/remédio · <em>jiàoshì</em> sala ✕ <em>kǎoshì</em> prova · <em>xiǎoshí</em> hora ✕ <em>shíjiān</em> tempo.</li>
+      <li><strong>Na audição, treine ouvir:</strong> preços (<em>kuài, yuán, qiān</em>), anos (<em>èr líng líng bā nián</em> = 2008), horas (<em>liù diǎn bàn, sān diǎn duō</em>), transportes (<em>zuò fēijī / chuán / chūzūchē</em>) e cores — é o que o modelo cobra.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>Montado a partir dos slides das lições 1–8 (HSK Standard Course 2) e do modelo oficial da prova final · Básico 2-B · <strong>Zhù nǐ kǎoshì shùnlì! Jiāyóu!</strong> — Boa prova!</footer>
+</div>
+
+<script>
+document.querySelectorAll('button.rev').forEach(function(btn){
+  if(btn.id==='togglePT') return;
+  btn.addEventListener('click', function(){
+    var ans = btn.parentElement.querySelector('.ans');
+    if(!ans) return;
+    var open = ans.classList.toggle('open');
+    btn.textContent = open ? 'Esconder resposta' : (btn.dataset.orig || 'Ver resposta');
+    if(!btn.dataset.orig) btn.dataset.orig = 'Ver resposta';
+  });
+});
+var tBtn = document.getElementById('togglePT');
+var hidden = false;
+tBtn.addEventListener('click', function(){
+  hidden = !hidden;
+  document.querySelectorAll('table.vt').forEach(function(t){
+    t.classList.toggle('hide-pt', hidden);
+    t.querySelectorAll('td.pt').forEach(function(td){ td.classList.remove('shown'); });
+  });
+  tBtn.textContent = hidden ? '👁 Mostrar todas as traduções' : '🙈 Esconder traduções (modo treino)';
+});
+document.addEventListener('click', function(e){
+  var td = e.target.closest('td.pt');
+  if(td && td.closest('table').classList.contains('hide-pt')) td.classList.add('shown');
+});
+</script>
+
+<script>
+/* ================= SIMULADO INTERATIVO ================= */
+function shuffle(a){ a=a.slice(); for(var i=a.length-1;i>0;i--){var j=Math.floor(Math.random()*(i+1)); var t=a[i]; a[i]=a[j]; a[j]=t;} return a; }
+var CIRCLED='①②③④⑤⑥⑦⑧⑨';
+
+/* ---- 2. Associação (matching) ---- */
+var MATCH=[
+ {title:"Grupo 1", note:"Pegadinha: jiàoshì (sala de aula) ✕ kǎoshì (prova) — só muda a 1ª sílaba!", pairs:[
+   {py:"lǚyóu", zh:"旅游", m:"viajar"},
+   {py:"qǐchuáng", zh:"起床", m:"levantar-se"},
+   {py:"yánsè", zh:"颜色", m:"cor"},
+   {py:"jièshào", zh:"介绍", m:"apresentar, indicar"},
+   {py:"zhǔnbèi", zh:"准备", m:"preparar"},
+   {py:"yóuyǒng", zh:"游泳", m:"nadar"},
+   {py:"jiàoshì", zh:"教室", m:"sala de aula"}
+ ]},
+ {title:"Grupo 2", note:"", pairs:[
+   {py:"fúwùyuán", zh:"服务员", m:"atendente, garçom"},
+   {py:"yīnwèi", zh:"因为", m:"porque"},
+   {py:"fēicháng", zh:"非常", m:"muito, extremamente"},
+   {py:"shìqing", zh:"事情", m:"assunto, coisa"},
+   {py:"zuǒbiān", zh:"左边", m:"esquerda"},
+   {py:"xiǎoshí", zh:"小时", m:"hora"},
+   {py:"jiějie", zh:"姐姐", m:"irmã mais velha"},
+   {py:"miàntiáo", zh:"面条", m:"macarrão"}
+ ]}
+];
+
+MATCH.forEach(function(grp){
+  var box=document.createElement('div'); box.className='match';
+  box.innerHTML='<h4>'+grp.title+'</h4>';
+  var cols=document.createElement('div'); cols.className='match-cols';
+  var left=document.createElement('div'); left.className='mcol';
+  var right=document.createElement('div'); right.className='mcol';
+  cols.appendChild(left); cols.appendChild(right);
+  box.appendChild(cols);
+  var status=document.createElement('div'); status.className='status'; status.textContent='0 / '+grp.pairs.length+' pares';
+  box.appendChild(status);
+  if(grp.note){ var n=document.createElement('div'); n.className='note'; n.textContent='💡 '+grp.note; box.appendChild(n); }
+
+  var order=shuffle(grp.pairs.map(function(_,i){return i;}));
+  var selL=null, selR=null, done=0, busy=false;
+
+  grp.pairs.forEach(function(p,i){
+    var b=document.createElement('button'); b.className='mitem'; b.dataset.idx=i;
+    b.innerHTML='<span class="py">'+p.py+'</span> <span class="zh">'+p.zh+'</span>';
+    b.addEventListener('click', function(){ pick('L', b); });
+    left.appendChild(b);
+  });
+  order.forEach(function(idx){
+    var b=document.createElement('button'); b.className='mitem'; b.dataset.idx=idx;
+    b.textContent=grp.pairs[idx].m;
+    b.addEventListener('click', function(){ pick('R', b); });
+    right.appendChild(b);
+  });
+
+  function pick(side, btn){
+    if(busy || btn.classList.contains('done')) return;
+    if(side==='L'){ if(selL) selL.classList.remove('active'); selL=btn; }
+    else { if(selR) selR.classList.remove('active'); selR=btn; }
+    btn.classList.add('active');
+    if(selL && selR){
+      busy=true;
+      if(selL.dataset.idx===selR.dataset.idx){
+        selL.classList.remove('active'); selR.classList.remove('active');
+        selL.classList.add('done'); selR.classList.add('done');
+        selL.disabled=true; selR.disabled=true;
+        done++; status.textContent=done+' / '+grp.pairs.length+' pares';
+        if(done===grp.pairs.length) status.textContent='✓ Completo! '+done+' / '+grp.pairs.length;
+        selL=null; selR=null; busy=false;
+      } else {
+        var a=selL, c=selR;
+        a.classList.add('wrong'); c.classList.add('wrong');
+        setTimeout(function(){
+          a.classList.remove('wrong','active'); c.classList.remove('wrong','active');
+          selL=null; selR=null; busy=false;
+        }, 650);
+      }
+    }
+  }
+  document.getElementById('matchWrap').appendChild(box);
+});
+
+/* ---- 3. Julgue √/× ---- */
+var JUDGE=[
+ {py:"Wǒ měi tiān liù diǎn qǐchuáng, qǐchuáng yǐhòu qù pǎobù.", zh:"我每天六点起床，起床以后去跑步。", claimPy:"Tā měi tiān dōu pǎobù.", claimZh:"他每天都跑步。", ans:true, why:"Ele levanta às 6 todo dia e depois corre; logo, corre todos os dias."},
+ {py:"Zhè jiàn bái de yǒudiǎnr cháng, nà jiàn hēi de yǒudiǎnr guì, ràng wǒ zài xiǎngxiang.", zh:"这件白的有点儿长，那件黑的有点儿贵，让我再想想。", claimPy:"Tā mǎi le nà jiàn hēisè de yīfu.", claimZh:"他买了那件黑色的衣服。", ans:false, why:"Ele ainda vai pensar (zài xiǎngxiang); não comprou nada ainda."},
+ {py:"Wǒ jiā lí gōngsī hěn yuǎn, zuò gōnggòng qìchē yào yí ge duō xiǎoshí.", zh:"我家离公司很远，坐公共汽车要一个多小时。", claimPy:"Tā jiā lí gōngsī hěn jìn.", claimZh:"他家离公司很近。", ans:false, why:"O texto diz hěn yuǎn (muito longe), não perto (jìn)."},
+ {py:"Yīnwèi zuótiān xiàyǔ, suǒyǐ wǒmen méi qù dǎ lánqiú, wǒ qù yóuyǒng le.", zh:"因为昨天下雨，所以我们没去打篮球，我去游泳了。", claimPy:"Tā zuótiān qù yóuyǒng le.", claimZh:"他昨天去游泳了。", ans:true, why:"Não jogou basquete por causa da chuva, mas foi nadar."},
+ {py:"Wáng lǎoshī ràng wǒ gàosu nǐ, míngtiān de kǎoshì jiǔ diǎn kāishǐ.", zh:"王老师让我告诉你，明天的考试九点开始。", claimPy:"Míngtiān jiǔ diǎn kāishǐ kǎoshì.", claimZh:"明天九点开始考试。", ans:true, why:"O recado é exatamente esse: a prova começa às 9h."}
+];
+JUDGE.forEach(function(q,i){
+  var row=document.createElement('div'); row.className='jrow';
+  row.innerHTML='<div class="st"><span class="py">'+(i+1)+'. '+q.py+'</span><span class="zh">'+q.zh+'</span></div>'+
+    '<div class="claim st"><span class="py">● '+q.claimPy+'</span><span class="zh">'+q.claimZh+'</span></div>';
+  var btns=document.createElement('div'); btns.className='jbtns';
+  var bT=document.createElement('button'); bT.textContent='√';
+  var bF=document.createElement('button'); bF.textContent='×';
+  var fb=document.createElement('div'); fb.className='jfb';
+  function answer(val, btn){
+    if(row.dataset.done) return; row.dataset.done='1';
+    bT.disabled=true; bF.disabled=true;
+    var ok=(val===q.ans);
+    (q.ans?bT:bF).classList.add('ok');
+    if(!ok) btn.classList.add('no');
+    fb.className='jfb show'+(ok?'':' bad');
+    fb.innerHTML='<strong>'+(ok?'✓ Acertou!':'✗ A resposta certa é '+(q.ans?'√':'×')+'.')+'</strong> '+q.why;
+  }
+  bT.addEventListener('click', function(){ answer(true, bT); });
+  bF.addEventListener('click', function(){ answer(false, bF); });
+  btns.appendChild(bT); btns.appendChild(bF);
+  row.appendChild(btns); row.appendChild(fb);
+  document.getElementById('judgeWrap').appendChild(row);
+});
+
+/* ---- 4. Lacunas (dropdown) ---- */
+var FILLBANK=[["A","děng","等"],["B","ràng","让"],["C","zài","再"],["D","shìqing","事情"],["E","zhǎo","找"],["F","lí","离"],["G","jiàoshì","教室"],["H","jiù","就"],["I","yīnwèi","因为"],["J","gàosu","告诉"]];
+var FILL=[
+ {py:"Wǒ zhège xīngqī tài máng le, xià ge xīngqī zài （ ） shíjiān yìqǐ qù kàn diànyǐng ba.", zh:"我这个星期太忙了，下个星期再（ ）时间一起去看电影吧。", ans:"E", why:"zhǎo shíjiān = achar um tempo."},
+ {py:"Zhāng lǎoshī zài shàngkè ne, nǐ （ ） yíhuìr ba.", zh:"张老师在上课呢，你（ ）一会儿吧。", ans:"A", why:"děng yíhuìr = esperar um pouco."},
+ {py:"Wáng lǎoshī （ ） wǒ gàosu nǐ, míngtiān tā bù néng lái shàngkè le.", zh:"王老师（ ）我告诉你，明天她不能来上课了。", ans:"B", why:"ràng wǒ = pediu que eu (frase pivô)."},
+ {py:"Dàwèi jīntiān bú zài jiā, nǐ míngtiān （ ） gěi tā dǎ diànhuà ba.", zh:"大卫今天不在家，你明天（ ）给他打电话吧。", ans:"C", why:"zài = de novo/depois (liga amanhã)."},
+ {py:"Nǐ zhǎo fúwùyuán yǒu shénme （ ）?", zh:"你找服务员有什么（ ）？", ans:"D", why:"shénme shìqing = que assunto?"},
+ {py:"Wǒ jiā （ ） xuéxiào bú tài yuǎn.", zh:"我家（ ）学校不太远。", ans:"F", why:"lí = marca a distância entre lugares."},
+ {py:"Běijīng dào Shànghǎi zuò fēijī yí ge duō xiǎoshí （ ） dào le.", zh:"北京到上海坐飞机一个多小时（ ）到了。", ans:"H", why:"jiù = já/rapidinho (chegou rápido)."},
+ {py:"Tóngxuémen hái zài （ ） xuéxí ne.", zh:"同学们还在（ ）学习呢。", ans:"G", why:"jiàoshì = na sala de aula."},
+ {py:"（ ） zuótiān xiàyǔ, suǒyǐ wǒmen méi qù tī zúqiú.", zh:"（ ）昨天下雨，所以我们没去踢足球。", ans:"I", why:"yīnwèi … suǒyǐ = porque … então."},
+ {py:"Qǐng nǐ （ ） tā, kǎoshì bā diǎn kāishǐ.", zh:"请你（ ）他，考试八点开始。", ans:"J", why:"gàosu tā = avise ele."}
+];
+var fbank=document.getElementById('fillBank');
+FILLBANK.forEach(function(o){ var s=document.createElement('span'); s.innerHTML='<b>'+o[0]+'</b> '+o[1]+' <i>'+o[2]+'</i>'; fbank.appendChild(s); });
+FILL.forEach(function(q,i){
+  var row=document.createElement('div'); row.className='frow';
+  row.innerHTML='<div class="fq"><span class="py">'+(i+1)+'. '+q.py+'</span><span class="zh">'+q.zh+'</span></div>';
+  var sel=document.createElement('select');
+  sel.innerHTML='<option value="">— escolha —</option>'+FILLBANK.map(function(o){return '<option value="'+o[0]+'">'+o[0]+' — '+o[1]+' '+o[2]+'</option>';}).join('');
+  var fb=document.createElement('div'); fb.className='fb';
+  sel.addEventListener('change', function(){
+    if(!sel.value){ sel.className=''; fb.className='fb'; return; }
+    var ok=(sel.value===q.ans);
+    sel.className=ok?'ok':'no';
+    fb.className='fb show'+(ok?'':' bad');
+    fb.innerHTML=ok? ('✓ Certo — '+q.why) : ('✗ A certa é '+q.ans+'. '+q.why);
+  });
+  row.appendChild(sel); row.appendChild(fb);
+  document.getElementById('fillWrap').appendChild(row);
+});
+
+/* ---- 5. Reordenar (clicar números) ---- */
+var ORDER=[
+ {parts:["jiǔyuè","qù Běijīng lǚyóu","zuì hǎo"], correct:[0,1,2], full:"Jiǔyuè qù Běijīng lǚyóu zuì hǎo.", tr:"Setembro é a melhor época para visitar Pequim.", zh:"九月去北京旅游最好。"},
+ {parts:["wǒ","dōu","měi tiān","liù diǎn qǐchuáng"], correct:[0,2,1,3], full:"Wǒ měi tiān dōu liù diǎn qǐchuáng.", tr:"Eu levanto às seis todos os dias. (měi + dōu juntos)", zh:"我每天都六点起床。"},
+ {parts:["de","zhè běn shū","wǒ xiě","shì"], correct:[1,3,2,0], full:"Zhè běn shū shì wǒ xiě de.", tr:"Este livro fui eu que escrevi. (shì … de)", zh:"这本书是我写的。"},
+ {parts:["nǐ de","hǎo le","yǐjīng","bìng"], correct:[0,3,2,1], full:"Nǐ de bìng yǐjīng hǎo le.", tr:"Sua doença já sarou. (igual à do modelo!)", zh:"你的病已经好了。"},
+ {parts:["yǒudiǎnr","zhè jiàn yīfu","dà"], correct:[1,0,2], full:"Zhè jiàn yīfu yǒudiǎnr dà.", tr:"Esta roupa está um pouco grande. (yǒudiǎnr antes do adjetivo)", zh:"这件衣服有点儿大。"},
+ {parts:["hěn yuǎn","lí","wǒ jiā","gōngsī"], correct:[2,1,3,0], full:"Wǒ jiā lí gōngsī hěn yuǎn.", tr:"Minha casa fica longe da empresa. (A + lí + B + adj.)", zh:"我家离公司很远。"},
+ {parts:["gàosu nǐ","Wáng lǎoshī","yí jiàn shìqing","ràng wǒ"], correct:[1,3,0,2], full:"Wáng lǎoshī ràng wǒ gàosu nǐ yí jiàn shìqing.", tr:"O professor Wang me pediu para te contar uma coisa. (frase pivô com ràng)", zh:"王老师让我告诉你一件事情。"},
+ {parts:["zài","wǒmen","xiàkè le","qù kàn diànyǐng"], correct:[1,2,0,3], full:"Wǒmen xiàkè le zài qù kàn diànyǐng.", tr:"Vamos ao cinema depois que a aula acabar. (V1 + le + zài + V2)", zh:"我们下课了再去看电影。"},
+ {parts:["duì","kāfēi hē duō le","bù hǎo","shēntǐ"], correct:[1,0,3,2], full:"Kāfēi hē duō le duì shēntǐ bù hǎo.", tr:"Café demais faz mal à saúde. (duì + subst. + bù hǎo)", zh:"咖啡喝多了对身体不好。"},
+ {parts:["wǒmen","yùndong yùndong ba","wàimiàn tiānqì hěn hǎo","chūqù"], correct:[2,0,3,1], full:"Wàimiàn tiānqì hěn hǎo, wǒmen chūqù yùndong yùndong ba.", tr:"O tempo lá fora está ótimo, vamos sair para nos exercitar! (verbo reduplicado)", zh:"外面天气很好，我们出去运动运动吧。"}
+];
+ORDER.forEach(function(q,qi){
+  var row=document.createElement('div'); row.className='orow';
+  var head=document.createElement('div'); head.className='fq';
+  head.innerHTML='<span class="py" style="font-weight:600">'+(qi+1)+'. Monte a frase:</span>';
+  row.appendChild(head);
+  var chips=document.createElement('div'); chips.className='ochips';
+  var ansRow=document.createElement('div'); ansRow.className='oans';
+  var ctrls=document.createElement('div'); ctrls.className='octrls';
+  var clr=document.createElement('button'); clr.className='oclear'; clr.textContent='↺ Limpar';
+  var fb=document.createElement('div'); fb.className='ofb';
+  ctrls.appendChild(clr);
+
+  var picked=[]; // sequência de índices clicados
+  var chipEls=[];
+  q.parts.forEach(function(txt,idx){
+    var c=document.createElement('button'); c.className='ochip';
+    c.innerHTML='<span class="num">'+CIRCLED[idx]+'</span> '+txt;
+    c.addEventListener('click', function(){
+      if(row.dataset.done || c.classList.contains('used')) return;
+      c.classList.add('used'); picked.push(idx); render();
+      if(picked.length===q.parts.length) check();
+    });
+    chips.appendChild(c); chipEls.push(c);
+  });
+  function render(){
+    if(!picked.length){ ansRow.innerHTML='<span class="ph">Sua resposta aparece aqui…</span>'; return; }
+    ansRow.textContent=picked.map(function(i){return CIRCLED[i];}).join(' ');
+  }
+  function check(){
+    row.dataset.done='1';
+    var ok=picked.join(',')===q.correct.join(',');
+    fb.className='ofb show'+(ok?'':' bad');
+    var yours=picked.map(function(i){return CIRCLED[i];}).join('');
+    var right=q.correct.map(function(i){return CIRCLED[i];}).join('');
+    fb.innerHTML='<strong>'+(ok?'✓ Correto! ':'✗ Você montou '+yours+'. A ordem certa é '+right+'. ')+'</strong>'+
+      '<span class="py">'+q.full+'</span><br>'+q.tr+' <span class="zh">'+q.zh+'</span>';
+  }
+  clr.addEventListener('click', function(){
+    picked=[]; delete row.dataset.done;
+    chipEls.forEach(function(c){ c.classList.remove('used'); });
+    fb.className='ofb'; render();
+  });
+  render();
+  row.appendChild(chips); row.appendChild(ansRow); row.appendChild(ctrls); row.appendChild(fb);
+  document.getElementById('orderWrap').appendChild(row);
+});
+</script>
+</body>
+</html>

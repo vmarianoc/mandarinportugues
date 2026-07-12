@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="Treino de audicao interativo para a prova de mandarim HSK2: dialogos falados pelo navegador com questoes A/B/C e frases para repetir (licoes 1 a 8).">
+<title>Treino de Audicao HSK2 - Licoes 1-8</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>&#127911;</text></svg>">
+</head>
+<body>
+<style>
+:root{
+  --bg:#f7f8f6; --surface:#ffffff; --ink:#22252a; --ink-soft:#5a5f66;
+  --line:#e3e4df; --accent:#b43a30; --accent-soft:#f6e9e7;
+  --jade:#2e7d6b; --jade-soft:#e6f1ee; --bad:#a33c3c; --bad-soft:#f4e4e4;
+  --chip:#efeeea; --hz:#9a9ea4; --gold:#8a6d2f;
+}
+@media (prefers-color-scheme: dark){
+  :root{
+    --bg:#17191d; --surface:#1f2228; --ink:#e8e6e1; --ink-soft:#a4a8ad;
+    --line:#33373d; --accent:#e07a6d; --accent-soft:#3a2724;
+    --jade:#5cb59e; --jade-soft:#1f342e; --bad:#d98080; --bad-soft:#3a2626;
+    --chip:#2a2d33; --hz:#6f747b; --gold:#c9a85c;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#17191d; --surface:#1f2228; --ink:#e8e6e1; --ink-soft:#a4a8ad;
+  --line:#33373d; --accent:#e07a6d; --accent-soft:#3a2724;
+  --jade:#5cb59e; --jade-soft:#1f342e; --bad:#d98080; --bad-soft:#3a2626;
+  --chip:#2a2d33; --hz:#6f747b; --gold:#c9a85c;
+}
+:root[data-theme="light"]{
+  --bg:#f7f8f6; --surface:#ffffff; --ink:#22252a; --ink-soft:#5a5f66;
+  --line:#e3e4df; --accent:#b43a30; --accent-soft:#f6e9e7;
+  --jade:#2e7d6b; --jade-soft:#e6f1ee; --bad:#a33c3c; --bad-soft:#f4e4e4;
+  --chip:#efeeea; --hz:#9a9ea4; --gold:#8a6d2f;
+}
+*{box-sizing:border-box}
+body{background:var(--bg); color:var(--ink); font-family:"Segoe UI",system-ui,"Noto Sans SC","Microsoft YaHei",sans-serif; line-height:1.6; margin:0; font-size:16px}
+.wrap{max-width:760px; margin:0 auto; padding:0 20px 80px}
+h1,h2{font-family:Georgia,"Noto Serif SC",serif; line-height:1.25; text-wrap:balance}
+h1{font-size:1.8rem; margin:.2em 0 .1em}
+h2{font-size:1.3rem; margin:1.6em 0 .4em; border-bottom:1px solid var(--line); padding-bottom:6px}
+header.hero{padding:42px 0 18px; border-bottom:3px double var(--accent)}
+.eyebrow{text-transform:uppercase; letter-spacing:.14em; font-size:.72rem; color:var(--accent); font-weight:600}
+.sub{color:var(--ink-soft); margin:.4em 0 0; max-width:60ch}
+.zh{font-family:"Microsoft YaHei","Noto Sans SC",sans-serif; color:var(--hz)}
+.py{font-weight:600}
+.callout{border-left:4px solid var(--accent); background:var(--accent-soft); border-radius:0 8px 8px 0; padding:12px 16px; margin:16px 0; font-size:.92rem}
+.callout.jade{border-left-color:var(--jade); background:var(--jade-soft)}
+#voiceStatus{font-size:.85rem; margin-top:10px}
+#voiceStatus.ok{color:var(--jade)}
+#voiceStatus.warn{color:var(--bad)}
+.scorebar{position:sticky; top:0; z-index:5; background:var(--bg); border-bottom:1px solid var(--line); padding:10px 0; display:flex; align-items:center; gap:14px; flex-wrap:wrap}
+.scorebar .score{font-weight:700; font-variant-numeric:tabular-nums}
+.scorebar .score b{color:var(--jade)}
+button{font-family:inherit; cursor:pointer}
+.q{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:16px 18px; margin:16px 0}
+.q .qhead{display:flex; align-items:center; gap:10px; flex-wrap:wrap; margin-bottom:10px}
+.qnum{background:var(--accent); color:#fff; font-family:Georgia,serif; font-weight:700; min-width:30px; height:30px; border-radius:6px; display:inline-flex; align-items:center; justify-content:center; font-size:.95rem; padding:0 6px}
+.tag{font-size:.72rem; text-transform:uppercase; letter-spacing:.08em; color:var(--ink-soft); background:var(--chip); border-radius:999px; padding:2px 10px}
+.playrow{display:flex; gap:8px; flex-wrap:wrap; margin:6px 0 12px}
+.playrow button{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px; padding:7px 16px; font-size:.9rem}
+.playrow button.main{background:var(--accent); border-color:var(--accent); color:#fff; font-weight:600}
+.playrow button:hover{filter:brightness(1.05)}
+.playrow button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.playrow button.speaking{opacity:.6}
+.opts{display:flex; flex-direction:column; gap:8px}
+.opts button{text-align:left; border:1px solid var(--line); background:var(--bg); color:var(--ink); border-radius:8px; padding:9px 14px; font-size:1rem}
+.opts button b{color:var(--accent); margin-right:8px}
+.opts button:hover{border-color:var(--accent)}
+.opts button:focus-visible{outline:2px solid var(--accent); outline-offset:2px}
+.opts button.correct{border-color:var(--jade); background:var(--jade-soft); font-weight:700}
+.opts button.wrong{border-color:var(--bad); background:var(--bad-soft); opacity:.85}
+.opts button:disabled{cursor:default}
+.feedback{display:none; margin-top:12px; padding:10px 14px; border-radius:0 8px 8px 0; font-size:.93rem}
+.feedback.show{display:block}
+.feedback.good{border-left:4px solid var(--jade); background:var(--jade-soft)}
+.feedback.bad{border-left:4px solid var(--bad); background:var(--bad-soft)}
+.feedback .line{display:block; margin:2px 0}
+.feedback .who{color:var(--accent); font-weight:700; margin-right:6px}
+.feedback .zh{font-size:.85rem; display:block; margin-bottom:6px}
+.feedback .tr{color:var(--ink-soft)}
+.rep{background:var(--surface); border:1px solid var(--line); border-radius:12px; padding:14px 18px; margin:14px 0}
+.rep .playrow{margin-bottom:8px}
+.rep .reveal{display:none; margin-top:8px; border-left:4px solid var(--jade); background:var(--jade-soft); border-radius:0 8px 8px 0; padding:8px 12px}
+.rep .reveal.show{display:block}
+.rep button.showpy{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px; padding:6px 14px; font-size:.85rem}
+footer{margin-top:60px; padding-top:16px; border-top:1px solid var(--line); color:var(--ink-soft); font-size:.82rem}
+ul.tight{margin:.4em 0; padding-left:1.2em}
+ul.tight li{margin:.3em 0}
+img{max-width:100%}
+a.backlink{display:inline-block; margin-bottom:4px; font-size:.85rem; color:var(--accent); text-decoration:none; border:1px solid var(--line); background:var(--chip); border-radius:999px; padding:4px 12px}
+a.backlink:hover{border-color:var(--accent)}
+@media (max-width:640px){
+  body{font-size:15px}
+  .wrap{padding:0 14px 60px}
+  header.hero{padding:24px 0 14px}
+  h1{font-size:1.4rem}
+  h2{font-size:1.2rem}
+  .q{padding:12px 12px}
+  .rep{padding:12px 12px}
+  .playrow button{padding:8px 14px; font-size:.88rem}
+  .opts button{padding:9px 12px; font-size:.95rem}
+  .callout{padding:10px 12px}
+  .scorebar{gap:10px}
+}
+</style>
+
+<div class="wrap">
+
+<header class="hero">
+  <a class="backlink" href="index.html">← Voltar ao guia de estudos</a>
+  <div class="eyebrow">Chino Mandarim Básico 2 · Parte 1 da prova (20 pts)</div>
+  <h1>🎧 Treino de Audição HSK2 — Lições 1 a 8</h1>
+  <p class="sub">Igual à prova: você ouve um diálogo curto (homem/mulher) e uma pergunta, e escolhe A, B ou C. O áudio usa a voz em chinês do seu navegador — <strong>não leia nada antes de responder!</strong> A transcrição em pinyin aparece depois que você escolhe.</p>
+  <div id="voiceStatus">Verificando voz em chinês do navegador…</div>
+</header>
+
+<div class="scorebar">
+  <span class="score">Acertos: <b id="hits">0</b> / <span id="answered">0</span> respondidas (de 10)</span>
+  <button id="resetBtn" style="border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px; padding:5px 14px; font-size:.8rem">↺ Recomeçar</button>
+</div>
+
+<div class="callout">
+  <strong>Como treinar igual à prova:</strong> na prova, cada áudio toca <strong>duas vezes</strong>. Então: ▶ Ouvir → pense → ▶ Ouvir de novo → responda. Use 🐢 Devagar só se travar — e tente de novo em velocidade normal depois.
+</div>
+
+<h2>Questões (escolha A, B ou C)</h2>
+<div id="quiz"></div>
+
+<h2>Ouvir e repetir (Parte 7 — oral)</h2>
+<p class="sub">Na prova oral você ouve 3 frases (2× cada) e repete em voz alta. Treine aqui: toque, repita imitando os tons, e só depois confira o pinyin.</p>
+<div id="repeat"></div>
+
+<div class="callout jade">
+  <strong>Dicas para a audição da prova:</strong>
+  <ul class="tight">
+    <li>Antes do áudio tocar, <strong>leia as alternativas</strong>: elas dizem o que você precisa caçar (uma cor? um preço? um transporte?).</li>
+    <li>Números matam a questão: <em>liù diǎn bàn</em> (6h30), <em>sān qiān duō kuài</em> (3 mil e poucos), <em>èr líng líng bā nián</em> (2008).</li>
+    <li>A resposta certa quase nunca é a primeira coisa dita — espere a frase da <strong>segunda pessoa</strong> e a pergunta final (<em>wèn:…</em>).</li>
+    <li>Cuidado com negações: <em>bú qù, bù xiǎng, méi</em> mudam tudo.</li>
+  </ul>
+</div>
+
+<footer>Treino montado com vocabulário e gramática apenas das lições 1–8 (HSK Standard Course 2), no formato da Parte 1 do modelo oficial · <strong>Jiāyóu!</strong></footer>
+</div>
+
+<script>
+// ================= DADOS =================
+// speak: o que o TTS fala (hanzi = pronúncia correta). py: transcrição mostrada depois.
+var QUESTIONS = [
+ {
+  tag:"cores",
+  dialog:[
+    {who:"Homem", speak:"这几件衣服，哪件是你的？", py:"Zhè jǐ jiàn yīfu, nǎ jiàn shì nǐ de?", tr:"Destas roupas, qual é a sua?"},
+    {who:"Mulher", speak:"那件白色的是我的。", py:"Nà jiàn báisè de shì wǒ de.", tr:"Aquela branca é a minha."},
+    {who:"Pergunta", speak:"她的衣服是什么颜色的？", py:"Tā de yīfu shì shénme yánsè de?", tr:"De que cor é a roupa dela?"}
+  ],
+  opts:["báisè (branca)","hēisè (preta)","hóngsè (vermelha)"], correct:0,
+  why:"Ela diz: nà jiàn BÁISÈ de shì wǒ de — a branca é a minha."
+ },
+ {
+  tag:"preço",
+  dialog:[
+    {who:"Mulher", speak:"这块手表多少钱？", py:"Zhè kuài shǒubiǎo duōshao qián?", tr:"Quanto custa este relógio?"},
+    {who:"Homem", speak:"三千多块。", py:"Sān qiān duō kuài.", tr:"Três mil e poucos yuans."},
+    {who:"Pergunta", speak:"手表多少钱？", py:"Shǒubiǎo duōshao qián?", tr:"Quanto custa o relógio?"}
+  ],
+  opts:["sān bǎi kuài (300)","sān qiān duō kuài (3.000 e poucos)","yì qiān kuài (1.000)"], correct:1,
+  why:"sān qiān = 3.000; o duō depois indica 'e poucos'. Cuidado para não confundir qiān (mil) com bǎi (cem)!"
+ },
+ {
+  tag:"transporte",
+  dialog:[
+    {who:"Homem", speak:"你怎么去机场？", py:"Nǐ zěnme qù jīchǎng?", tr:"Como você vai ao aeroporto?"},
+    {who:"Mulher", speak:"坐公共汽车太慢了，我坐出租车去。", py:"Zuò gōnggòng qìchē tài màn le, wǒ zuò chūzūchē qù.", tr:"De ônibus é lento demais; vou de táxi."},
+    {who:"Pergunta", speak:"她怎么去机场？", py:"Tā zěnme qù jīchǎng?", tr:"Como ela vai ao aeroporto?"}
+  ],
+  opts:["zuò gōnggòng qìchē (de ônibus)","zuò chūzūchē (de táxi)","zuò fēijī (de avião)"], correct:1,
+  why:"Pegadinha clássica: o ônibus é citado primeiro, mas descartado (tài màn le). Ela vai de táxi."
+ },
+ {
+  tag:"rotina",
+  dialog:[
+    {who:"Mulher", speak:"你每天几点起床？", py:"Nǐ měi tiān jǐ diǎn qǐchuáng?", tr:"A que horas você levanta todo dia?"},
+    {who:"Homem", speak:"我每天六点起床，起床以后去跑步。", py:"Wǒ měi tiān liù diǎn qǐchuáng, qǐchuáng yǐhòu qù pǎobù.", tr:"Levanto às seis e depois vou correr."},
+    {who:"Pergunta", speak:"他起床以后做什么？", py:"Tā qǐchuáng yǐhòu zuò shénme?", tr:"O que ele faz depois de levantar?"}
+  ],
+  opts:["pǎobù (correr)","chīfàn (comer)","shuìjiào (dormir)"], correct:0,
+  why:"qǐchuáng yǐhòu qù pǎobù — depois de levantar, vai correr. A pergunta não era sobre a hora!"
+ },
+ {
+  tag:"lugares",
+  dialog:[
+    {who:"Homem", speak:"你知道医院在哪儿吗？", py:"Nǐ zhīdào yīyuàn zài nǎr ma?", tr:"Você sabe onde fica o hospital?"},
+    {who:"Mulher", speak:"在那个小商店旁边。", py:"Zài nàge xiǎo shāngdiàn pángbiān.", tr:"Fica ao lado daquela lojinha."},
+    {who:"Pergunta", speak:"医院在哪儿？", py:"Yīyuàn zài nǎr?", tr:"Onde fica o hospital?"}
+  ],
+  opts:["xuéxiào pángbiān (ao lado da escola)","shāngdiàn pángbiān (ao lado da loja)","fànguǎnr pángbiān (ao lado do restaurante)"], correct:1,
+  why:"zài nàge xiǎo SHĀNGDIÀN pángbiān — ao lado da lojinha."
+ },
+ {
+  tag:"esportes",
+  dialog:[
+    {who:"Mulher", speak:"你最喜欢什么运动？", py:"Nǐ zuì xǐhuan shénme yùndòng?", tr:"Qual esporte você mais gosta?"},
+    {who:"Homem", speak:"我最喜欢游泳，这个月我天天都去游泳。", py:"Wǒ zuì xǐhuan yóuyǒng, zhège yuè wǒ tiāntiān dōu qù yóuyǒng.", tr:"Gosto mais de natação; este mês nado todo dia."},
+    {who:"Pergunta", speak:"他最喜欢什么运动？", py:"Tā zuì xǐhuan shénme yùndòng?", tr:"Qual esporte ele mais gosta?"}
+  ],
+  opts:["tī zúqiú (futebol)","dǎ lánqiú (basquete)","yóuyǒng (natação)"], correct:2,
+  why:"zuì xǐhuan YÓUYǑNG. Note o tiāntiān dōu (todo santo dia) — reduplicação da lição 6."
+ },
+ {
+  tag:"tempo/clima",
+  dialog:[
+    {who:"Homem", speak:"昨天你们怎么没去打篮球？", py:"Zuótiān nǐmen zěnme méi qù dǎ lánqiú?", tr:"Por que vocês não foram jogar basquete ontem?"},
+    {who:"Mulher", speak:"因为昨天下雨，所以我们没去。", py:"Yīnwèi zuótiān xiàyǔ, suǒyǐ wǒmen méi qù.", tr:"Porque ontem choveu, então não fomos."},
+    {who:"Pergunta", speak:"昨天天气怎么样？", py:"Zuótiān tiānqì zěnmeyàng?", tr:"Como estava o tempo ontem?"}
+  ],
+  opts:["xiàyǔ (choveu)","qíng (ensolarado)","yīn (nublado)"], correct:0,
+  why:"yīnwèi zuótiān XIÀYǓ — porque ontem choveu. Diálogo da lição 6 do livro!"
+ },
+ {
+  tag:"distância",
+  dialog:[
+    {who:"Mulher", speak:"你家离公司远吗？", py:"Nǐ jiā lí gōngsī yuǎn ma?", tr:"Sua casa fica longe da empresa?"},
+    {who:"Homem", speak:"很远，坐公共汽车要一个多小时呢！", py:"Hěn yuǎn, zuò gōnggòng qìchē yào yí ge duō xiǎoshí ne!", tr:"Bem longe — de ônibus leva mais de uma hora!"},
+    {who:"Pergunta", speak:"坐公共汽车要多长时间？", py:"Zuò gōnggòng qìchē yào duō cháng shíjiān?", tr:"Quanto tempo leva de ônibus?"}
+  ],
+  opts:["bàn ge xiǎoshí (meia hora)","yí ge duō xiǎoshí (mais de 1 hora)","liǎng ge xiǎoshí (2 horas)"], correct:1,
+  why:"yí ge DUŌ xiǎoshí = uma hora e pouco / mais de uma hora. É o texto 3 da lição 7."
+ },
+ {
+  tag:"compras",
+  dialog:[
+    {who:"Homem", speak:"帮我看一下这件衣服怎么样。", py:"Bāng wǒ kàn yíxià zhè jiàn yīfu zěnmeyàng.", tr:"Me ajuda a ver como está esta roupa."},
+    {who:"Mulher", speak:"颜色还可以，就是有点儿大。", py:"Yánsè hái kěyǐ, jiùshì yǒudiǎnr dà.", tr:"A cor está ok, só que está um pouco grande."},
+    {who:"Pergunta", speak:"她觉得这件衣服怎么样？", py:"Tā juéde zhè jiàn yīfu zěnmeyàng?", tr:"O que ela acha desta roupa?"}
+  ],
+  opts:["yǒudiǎnr dà (um pouco grande)","yǒudiǎnr xiǎo (um pouco pequena)","yǒudiǎnr guì (um pouco cara)"], correct:0,
+  why:"yǒudiǎnr DÀ — está meio grande (a cor estava ok). Texto 2 da lição 5."
+ },
+ {
+  tag:"recado/hora",
+  dialog:[
+    {who:"Mulher", speak:"王老师让我告诉你，明天的考试九点开始。", py:"Wáng lǎoshī ràng wǒ gàosu nǐ, míngtiān de kǎoshì jiǔ diǎn kāishǐ.", tr:"O professor Wang me pediu para te avisar: a prova de amanhã começa às nove."},
+    {who:"Homem", speak:"好的，谢谢你！", py:"Hǎo de, xièxie nǐ!", tr:"Tá bom, obrigado!"},
+    {who:"Pergunta", speak:"明天的考试几点开始？", py:"Míngtiān de kǎoshì jǐ diǎn kāishǐ?", tr:"A que horas começa a prova de amanhã?"}
+  ],
+  opts:["bā diǎn (8h)","jiǔ diǎn (9h)","shí diǎn (10h)"], correct:1,
+  why:"JIǓ diǎn kāishǐ — começa às 9h. Estrutura ràng (lição 8): o professor pediu que ela avisasse."
+ }
+];
+
+var REPEAT = [
+ {speak:"九月去北京旅游最好。", py:"Jiǔyuè qù Běijīng lǚyóu zuì hǎo.", tr:"Setembro é a melhor época para visitar Pequim. (L1)"},
+ {speak:"我每天六点起床。", py:"Wǒ měi tiān liù diǎn qǐchuáng.", tr:"Eu levanto às seis todos os dias. (L2)"},
+ {speak:"左边那个红色的是我的。", py:"Zuǒbiān nàge hóngsè de shì wǒ de.", tr:"O vermelho à esquerda é o meu. (L3)"},
+ {speak:"这个工作是他帮我介绍的。", py:"Zhège gōngzuò shì tā bāng wǒ jièshào de.", tr:"Foi ele que me indicou este trabalho. (L4)"},
+ {speak:"咖啡喝多了对身体不好。", py:"Kāfēi hē duō le duì shēntǐ bù hǎo.", tr:"Café demais faz mal à saúde. (L5)"},
+ {speak:"你家离公司远吗？", py:"Nǐ jiā lí gōngsī yuǎn ma?", tr:"Sua casa fica longe da empresa? (L7)"},
+ {speak:"让我想想再告诉你。", py:"Ràng wǒ xiǎngxiang zài gàosu nǐ.", tr:"Deixa eu pensar e depois te conto. (L8)"}
+];
+
+// ================= TTS =================
+var zhVoice = null;
+function pickVoice(){
+  var vs = speechSynthesis.getVoices();
+  var zh = vs.filter(function(v){ return v.lang && v.lang.toLowerCase().indexOf('zh')===0; });
+  // preferir zh-CN
+  zhVoice = zh.find(function(v){ return /zh[-_]CN/i.test(v.lang); }) || zh[0] || null;
+  var st = document.getElementById('voiceStatus');
+  if(zhVoice){
+    st.textContent = '✓ Voz em chinês encontrada: ' + zhVoice.name;
+    st.className = 'ok';
+  } else if (vs.length){
+    st.textContent = '⚠ Seu navegador não tem voz em chinês instalada. O áudio pode sair errado — nesse caso, use os botões de resposta para ver a transcrição e leia em voz alta você mesmo.';
+    st.className = 'warn';
+  }
+}
+if('speechSynthesis' in window){
+  pickVoice();
+  speechSynthesis.onvoiceschanged = pickVoice;
+} else {
+  document.getElementById('voiceStatus').textContent = '⚠ Este navegador não suporta síntese de voz.';
+  document.getElementById('voiceStatus').className = 'warn';
+}
+
+function speakSeq(texts, rate, btn){
+  if(!('speechSynthesis' in window)) return;
+  speechSynthesis.cancel();
+  if(btn){ btn.classList.add('speaking'); }
+  var i = 0;
+  function next(){
+    if(i >= texts.length){ if(btn) btn.classList.remove('speaking'); return; }
+    var u = new SpeechSynthesisUtterance(texts[i]);
+    u.lang = 'zh-CN';
+    if(zhVoice) u.voice = zhVoice;
+    u.rate = rate;
+    u.onend = function(){ i++; setTimeout(next, 500); };
+    u.onerror = function(){ if(btn) btn.classList.remove('speaking'); };
+    speechSynthesis.speak(u);
+  }
+  next();
+}
+
+// ================= QUIZ =================
+var hits = 0, answered = 0;
+var LETTERS = ['A','B','C'];
+var quizEl = document.getElementById('quiz');
+
+QUESTIONS.forEach(function(q, qi){
+  var card = document.createElement('div');
+  card.className = 'q';
+  var texts = q.dialog.map(function(d){ return d.speak; });
+
+  var head = document.createElement('div');
+  head.className = 'qhead';
+  head.innerHTML = '<span class="qnum">'+(qi+1)+'</span><span class="tag">'+q.tag+'</span>';
+  card.appendChild(head);
+
+  var playrow = document.createElement('div');
+  playrow.className = 'playrow';
+  var bPlay = document.createElement('button');
+  bPlay.className = 'main';
+  bPlay.textContent = '▶ Ouvir diálogo';
+  bPlay.addEventListener('click', function(){ speakSeq(texts, 0.85, bPlay); });
+  var bSlow = document.createElement('button');
+  bSlow.textContent = '🐢 Devagar';
+  bSlow.addEventListener('click', function(){ speakSeq(texts, 0.55, bSlow); });
+  playrow.appendChild(bPlay); playrow.appendChild(bSlow);
+  card.appendChild(playrow);
+
+  var opts = document.createElement('div');
+  opts.className = 'opts';
+  var fb = document.createElement('div');
+  fb.className = 'feedback';
+
+  q.opts.forEach(function(opt, oi){
+    var b = document.createElement('button');
+    b.innerHTML = '<b>'+LETTERS[oi]+'.</b> '+opt;
+    b.addEventListener('click', function(){
+      if(card.dataset.done) return;
+      card.dataset.done = '1';
+      answered++;
+      var ok = (oi === q.correct);
+      if(ok) hits++;
+      document.getElementById('hits').textContent = hits;
+      document.getElementById('answered').textContent = answered;
+      Array.prototype.forEach.call(opts.children, function(btn, bi){
+        btn.disabled = true;
+        if(bi === q.correct) btn.classList.add('correct');
+        else if(bi === oi && !ok) btn.classList.add('wrong');
+      });
+      var lines = q.dialog.map(function(d){
+        return '<span class="line"><span class="who">'+d.who+':</span><span class="py">'+d.py+'</span> — <span class="tr">'+d.tr+'</span></span><span class="zh">'+d.speak+'</span>';
+      }).join('');
+      fb.className = 'feedback show ' + (ok ? 'good' : 'bad');
+      fb.innerHTML = '<strong>'+(ok ? '✓ Acertou!' : '✗ A certa era '+LETTERS[q.correct]+'.')+'</strong> '+q.why+'<hr style="border:none;border-top:1px solid var(--line);margin:8px 0">'+lines;
+    });
+    opts.appendChild(b);
+  });
+  card.appendChild(opts);
+  card.appendChild(fb);
+  quizEl.appendChild(card);
+});
+
+document.getElementById('resetBtn').addEventListener('click', function(){
+  hits = 0; answered = 0;
+  document.getElementById('hits').textContent = 0;
+  document.getElementById('answered').textContent = 0;
+  quizEl.innerHTML = '';
+  // rebuild simples: recarrega a página (estado limpo)
+  location.reload();
+});
+
+// ================= REPEAT =================
+var repEl = document.getElementById('repeat');
+REPEAT.forEach(function(r, ri){
+  var card = document.createElement('div');
+  card.className = 'rep';
+  var row = document.createElement('div');
+  row.className = 'playrow';
+  var b1 = document.createElement('button');
+  b1.className = 'main';
+  b1.textContent = '▶ Frase '+(ri+1)+' (2×, como na prova)';
+  b1.addEventListener('click', function(){ speakSeq([r.speak, r.speak], 0.85, b1); });
+  var b2 = document.createElement('button');
+  b2.textContent = '🐢 Devagar';
+  b2.addEventListener('click', function(){ speakSeq([r.speak], 0.55, b2); });
+  row.appendChild(b1); row.appendChild(b2);
+  card.appendChild(row);
+  var show = document.createElement('button');
+  show.className = 'showpy';
+  show.textContent = 'Ver pinyin';
+  var rv = document.createElement('div');
+  rv.className = 'reveal';
+  rv.innerHTML = '<span class="py">'+r.py+'</span><br><span style="color:var(--ink-soft); font-size:.9rem">'+r.tr+'</span> <span class="zh" style="font-size:.85rem">'+r.speak+'</span>';
+  show.addEventListener('click', function(){
+    var open = rv.classList.toggle('show');
+    show.textContent = open ? 'Esconder pinyin' : 'Ver pinyin';
+  });
+  card.appendChild(show);
+  card.appendChild(rv);
+  repEl.appendChild(card);
+});
+</script>
+
+</body>
+</html>
