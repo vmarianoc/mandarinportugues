@@ -173,7 +173,21 @@ nav.toc a.ext{border-color:var(--accent); color:var(--accent); font-weight:600}
 .ofb.bad{border-left-color:#d9534f; background:rgba(217,83,79,.12)}
 .ofb .py{font-weight:600}
 .ofb .zh{font-size:.85rem}
+/* ---- seções recolhíveis (accordion) ---- */
+section.panel{background:var(--surface); border:1px solid var(--line); border-radius:12px; margin:16px 0; overflow:hidden}
+section.panel > .sec-head{margin:0; padding:15px 18px; cursor:pointer; display:flex; align-items:baseline; gap:12px; border-bottom:1px solid var(--line)}
+section.panel.collapsed > .sec-head{border-bottom:none}
+section.panel > .sec-head:hover{background:var(--chip)}
+section.panel > .sec-head::after{content:'▾'; margin-left:auto; align-self:center; color:var(--accent); font-size:1rem; transition:transform .15s}
+section.panel.collapsed > .sec-head::after{transform:rotate(-90deg)}
+.panel-body{padding:8px 18px 20px}
+section.panel.collapsed > .panel-body{display:none}
+.panel-ctrls{display:flex; gap:8px; margin:10px 0 0; flex-wrap:wrap}
+.mini2{border:1px solid var(--line); background:var(--chip); color:var(--ink); border-radius:999px; padding:5px 14px; font-size:.8rem; cursor:pointer; font-family:inherit}
+.mini2:hover{border-color:var(--accent); color:var(--accent)}
 @media (max-width:640px){
+  section.panel > .sec-head{padding:13px 13px}
+  .panel-body{padding:6px 13px 16px}
   body{font-size:15px}
   .wrap{padding:0 14px 60px}
   header.hero{padding:26px 0 14px}
@@ -856,6 +870,43 @@ ORDER.forEach(function(q,qi){
   row.appendChild(chips); row.appendChild(ansRow); row.appendChild(ctrls); row.appendChild(fb);
   document.getElementById('orderWrap').appendChild(row);
 });
+</script>
+
+<script>
+/* ================= seções recolhíveis ================= */
+(function(){
+  var panels=[];
+  document.querySelectorAll('section').forEach(function(sec){
+    var head=sec.querySelector(':scope > .sec-head');
+    if(!head) return;
+    var body=document.createElement('div'); body.className='panel-body';
+    var el=head.nextElementSibling;
+    while(el){ var nx=el.nextElementSibling; body.appendChild(el); el=nx; }
+    sec.appendChild(body);
+    sec.classList.add('panel','collapsed');
+    head.setAttribute('role','button'); head.setAttribute('tabindex','0'); head.setAttribute('aria-expanded','false');
+    function setOpen(open){ sec.classList.toggle('collapsed', !open); head.setAttribute('aria-expanded', open?'true':'false'); }
+    sec._setOpen=setOpen;
+    head.addEventListener('click', function(){ setOpen(sec.classList.contains('collapsed')); });
+    head.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); setOpen(sec.classList.contains('collapsed')); } });
+    panels.push(sec);
+  });
+  if(panels.length) panels[0]._setOpen(true);
+  var nav=document.querySelector('nav.toc');
+  if(nav){
+    var bar=document.createElement('div'); bar.className='panel-ctrls';
+    var bo=document.createElement('button'); bo.className='mini2'; bo.type='button'; bo.textContent='➕ Abrir tudo';
+    var bc=document.createElement('button'); bc.className='mini2'; bc.type='button'; bc.textContent='➖ Fechar tudo';
+    bo.addEventListener('click', function(){ panels.forEach(function(s){ s._setOpen(true); }); });
+    bc.addEventListener('click', function(){ panels.forEach(function(s){ s._setOpen(false); }); });
+    bar.appendChild(bo); bar.appendChild(bc);
+    nav.parentNode.insertBefore(bar, nav.nextSibling);
+    nav.querySelectorAll('a[href^="#"]').forEach(function(a){
+      a.addEventListener('click', function(){ var id=a.getAttribute('href').slice(1); var s=document.getElementById(id); if(s&&s._setOpen){ s._setOpen(true); setTimeout(function(){ s.scrollIntoView({behavior:'smooth', block:'start'}); },20); } });
+    });
+  }
+  if(location.hash){ var t=document.getElementById(location.hash.slice(1)); if(t&&t._setOpen) t._setOpen(true); }
+})();
 </script>
 </body>
 </html>
